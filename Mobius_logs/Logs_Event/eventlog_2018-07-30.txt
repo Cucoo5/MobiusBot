@@ -1,0 +1,6 @@
+2018-07-30 21-09-22 - Cucoo5 sent to channel bot_testing : <<help | packed info for module use.
+2018-07-30 21-13-02 - Cucoo5 sent to channel bot_testing : <<help | packed info for module use.
+2018-07-30 21-16-52 - Cucoo5 sent to channel bot_testing : <<help | packed info for module use.
+2018-07-30 21-20-38 - Cucoo5 sent to channel bot_testing : <<help | packed info for module use.
+2018-07-30 21-22-14 - Cucoo5 sent to channel bot_testing : <<help | packed info for module use.
+2018-07-30 21-33-16 - Cucoo5 sent to channel bot_testing : <<help | packed info for module use.

@@ -1,0 +1,52 @@
+2018-07-30 21-09-22 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\functions.py", line 223, in unpackoutput
+    command.append(line[1])
+IndexError: list index out of range
+
+2018-07-30 21-13-02 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 82, in outputhandler
+    cmd=command[i]
+IndexError: list index out of range
+
+2018-07-30 21-16-52 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\functions.py", line 223, in unpackoutput
+    command.append(line[1])
+IndexError: list index out of range
+
+2018-07-30 21-20-38 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\functions.py", line 224, in unpackoutput
+    command.append(line[1])
+IndexError: list index out of range
+
+2018-07-30 21-22-14 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\functions.py", line 226, in unpackoutput
+    command.append(line[1])
+IndexError: list index out of range
+
+2018-07-30 21-33-16 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\functions.py", line 223, in unpackoutput
+    command.append(line[1])
+IndexError: list index out of range
+
