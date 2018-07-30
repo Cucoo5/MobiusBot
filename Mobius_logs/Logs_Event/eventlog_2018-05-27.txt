@@ -1,0 +1,8 @@
+2018-05-27 03-48-55 - Cucoo5 sent to channel general : >>help | executed: help
+2018-05-27 03-49-26 - Cucoo5 sent to channel general : >>versionlog | executed: versionlog
+2018-05-27 13-43-49 - Cucoo5 sent to channel bot_testing : >>mobius shutdown | executed: shutdown
+2018-05-27 18-13-25 - Cucoo5 sent to channel bot_testing : >>info | executed: info
+2018-05-27 18-13-38 - Cucoo5 sent to channel bot_testing : >>echo | executed: echo
+2018-05-27 18-13-48 - Cucoo5 sent to channel bot_testing : >>shutdown | executed: shutdown
+2018-05-27 19-06-50 - Cucoo5 sent to channel bot_testing : <<info | executed: info
+2018-05-27 19-07-49 - Cucoo5 sent to channel bot_testing : <<info | executed: info

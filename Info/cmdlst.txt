@@ -1,0 +1,8 @@
+help - Input: N/A | Output: list of all available commands and their documentation.
+info - Input: N/A | Output: lists bot information.
+versionlog - Input: N/A | Output: lists version history
+echo - Input: message | Output: a copy of the message after the command, italicized.
+time - Input: N/A | Output: current time in GMT.
+badcmd - Input: N/A | Output: Error Testing
+~~activate~~ - ~~Input: None or App Name | Output: initialize a Mobius app to the user~~
+MASTER - shutdown - Input: N/A | Output: Logs Mobius off

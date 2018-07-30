@@ -1,0 +1,10 @@
+v0.01: Added *echo* function
+v0.02: Improved *echo* function. Added *time* function.
+v0.03: Under-the-hood changes.
+v0.04: Improved command module.
+v0.05: Added *info* command and improved *help* command. Improved underlaying structure.
+v0.06: Improved bad command handling. Testing write to file functionality
+v0.07: Added user registration, improved command handling, and event logging
+v0.08: Fixed time module and added version log command.
+v0.09: More under-the-hood stuff. Added logout function for master. Improved directory organization.
+v0.10: Revamped the bot. Added user management system and natural command system.

@@ -1,0 +1,20 @@
+2018-05-13 21:28:27 - Cucoo5#4871 sent to channel bot_testing : !mobius badcmd
+Traceback (most recent call last):
+  File "./Build_Live/discordbot\commandmanager.py", line 117, in commandmng
+    msg=self.__badcmd()
+  File "./Build_Live/discordbot\commandmanager.py", line 340, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+--------------------------------------------------------------------
+
+2018-05-13 21:28:45 - Cucoo5#4871 sent to channel bot_testing : !mobius badcmd
+Traceback (most recent call last):
+  File "./Build_Live/discordbot\commandmanager.py", line 117, in commandmng
+    msg=self.__badcmd()
+  File "./Build_Live/discordbot\commandmanager.py", line 340, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+--------------------------------------------------------------------
+

@@ -1,0 +1,312 @@
+2018-05-26 14-03-39 - Cucoo5 sent to channel bot_testing : this is a line test
+>>mobius check
+final line | ['Traceback (most recent call last):\n', '  File "C:\\Users\\mwyoo\\Google Drive\\Michael\'s Documents\\Coding Projects\\Game\\Mobius\\Bot\\Mobiusbot.py", line 129, in on_message\n    output = usrapp.in_and_out(message)\n', '  File "C:\\Users\\mwyoo\\Google Drive\\Michael\'s Documents\\Coding Projects\\Game\\Mobius\\Apps\\standby\\basic_cmds.py", line 47, in in_and_out\n    if word == self.commandprefix:\n', "AttributeError: 'stdbycmds' object has no attribute 'commandprefix'\n"]
+2018-05-26 14-10-14 - Cucoo5 sent to channel bot_testing : this is a test
+>>mobius check
+this is final line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 140, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 181, in unpackoutput
+    for line in output:
+TypeError: 'NoneType' object is not iterable
+
+2018-05-26 14-12-25 - Cucoo5 sent to channel bot_testing : multiline test
+>> mobius test check
+final line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 140, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 181, in unpackoutput
+    for line in output:
+TypeError: 'NoneType' object is not iterable
+
+2018-05-26 14-26-18 - Cucoo5 sent to channel bot_testing : multi line test
+>>mobius test check
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 60, in in_and_out
+    nextcharacter=characterlist[i+1]
+IndexError: string index out of range
+
+2018-05-26 14-27-16 - Cucoo5 sent to channel bot_testing : multi line check
+>>mobius test check
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 140, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 181, in unpackoutput
+    for line in output:
+TypeError: 'NoneType' object is not iterable
+
+2018-05-26 14-29-03 - Cucoo5 sent to channel bot_testing : multi line check
+>>mobius check test
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 140, in on_message
+    for output in outputhandler(output):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 78, in outputhandler
+    outsys,command=fn.unpackoutput(output)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 181, in unpackoutput
+    for line in output:
+TypeError: 'NoneType' object is not iterable
+
+2018-05-26 14-40-03 - Cucoo5 sent to channel bot_testing : multi line test
+>>mobius check test
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 41, in in_and_out
+    cmdline=getcommandline(self.message)
+NameError: name 'getcommandline' is not defined
+
+2018-05-26 14-42-42 - Cucoo5 sent to channel bot_testing : mult line test
+>>mobius check test
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 65, in in_and_out
+    commandsection=wordlist[commandindex:endindex]
+NameError: name 'commandindex' is not defined
+
+2018-05-26 15-28-45 - Cucoo5 sent to channel bot_testing : multi line test
+>>mobius test check | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 41, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 49, in getcmdinandcntxt
+    cmdline=fn.getcommandline(message)
+NameError: name 'fn' is not defined
+
+2018-05-26 15-29-47 - Cucoo5 sent to channel bot_testing : multi line test
+>>mobius test check
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 41, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 63, in getcmdinandcntxt
+    commandcontext=cmdline.remove(commandinput)
+AttributeError: 'str' object has no attribute 'remove'
+
+2018-05-26 15-32-45 - Cucoo5 sent to channel bot_testing : multi line test
+>>mobius check test
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 44, in in_and_out
+    print("cmdline: \n",cmdline)
+NameError: name 'cmdline' is not defined
+
+2018-05-26 15-34-34 - Cucoo5 sent to channel bot_testing : mobius multi line test
+>>mobius test check
+end line | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 129, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 50, in in_and_out
+    commandsection=wordlist[commandindex:endindex]
+NameError: name 'wordlist' is not defined
+
+2018-05-26 18-38-44 - Cucoo5 sent to channel bot_testing : >>echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 63, in getcmdinandcntxt
+    commandcontext=cmdline.replace(commandinput+" ", "")
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+2018-05-26 18-43-46 - Cucoo5 sent to channel bot_testing : >>echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 64, in getcmdinandcntxt
+    commandcontext=cmdline.replace(commandinput+" ", "")
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+2018-05-26 18-45-31 - Cucoo5 sent to channel bot_testing : >>echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 53, in in_and_out
+    commandinput=cmdin.strip(">>")
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+2018-05-26 18-47-51 - Cucoo5 sent to channel bot_testing : >>echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 60, in in_and_out
+    if commandinput in self.cmdlstt:
+AttributeError: 'stdbycmds' object has no attribute 'cmdlstt'
+
+2018-05-26 18-50-06 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 165, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-10-09 - Cucoo5 sent to channel bot_testing : >>echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 66, in getcmdinandcntxt
+    print("cmdcntxt: ",cmdcntxt)
+UnboundLocalError: local variable 'cmdcntxt' referenced before assignment
+
+2018-05-26 19-14-47 - Cucoo5 sent to channel announcements : @everyone 
+MobiusDEV Version 0.10 is in testing. Almost like the old one but under the hood, far better. I want to make sure it's working proper before going on.
+
+Changed the command system to >> instead of !. | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 115, in in_and_out
+    fn.eventlogger(self.message,eventinfo)
+UnboundLocalError: local variable 'eventinfo' referenced before assignment
+
+2018-05-26 19-15-00 - Cucoo5 sent to channel announcements : ...oh you bastard. | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 55, in getcmdinandcntxt
+    commandinput=wordlist[0].lower()
+IndexError: list index out of range
+
+2018-05-26 19-24-07 - Cucoo5 sent to channel bot_testing : ~~strike~~ | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 55, in getcmdinandcntxt
+    commandinput=wordlist[0].lower()
+IndexError: list index out of range
+
+2018-05-26 19-47-25 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 183, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-47-41 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 183, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-48-32 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 183, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-49-09 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 183, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-49-52 - Cucoo5 sent to channel bot_testing : >>mobius badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 131, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 183, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-50-30 - Cucoo5 sent to channel bot_testing : !!echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 55, in getcmdinandcntxt
+    wordlist=cmdline.split()
+IndexError: list index out of range
+
+2018-05-26 19-50-32 - Cucoo5 sent to channel bot_testing : >1 | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    cmdin,cmdcntxt=fn.getcmdinandcntxt(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\functions.py", line 55, in getcmdinandcntxt
+    wordlist=cmdline.split()
+IndexError: list index out of range
+
+2018-05-26 19-53-03 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 53, in in_and_out
+    commandinput=cmdin.strip(">>")
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+2018-05-26 19-53-12 - Cucoo5 sent to channel bot_testing : >>>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 53, in in_and_out
+    commandinput=cmdin.strip(">>")
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+2018-05-26 19-54-30 - Cucoo5 sent to channel bot_testing : >>>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 54, in in_and_out
+    if commandinput != None:
+UnboundLocalError: local variable 'commandinput' referenced before assignment
+
+2018-05-26 19-56-43 - Cucoo5 sent to channel bot_testing : >>>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 54, in in_and_out
+    if commandinput != None:
+UnboundLocalError: local variable 'commandinput' referenced before assignment
+
+2018-05-26 19-58-12 - Cucoo5 sent to channel bot_testing : >>>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 183, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
+2018-05-26 19-59-10 - Cucoo5 sent to channel bot_testing : >>>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 133, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 135, in in_and_out
+    return output
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-05-26 20-03-44 - Cucoo5 sent to channel bot_testing : >>>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 143, in on_message
+    for output in outputhandler(output):
+TypeError: 'NoneType' object is not iterable
+
+2018-05-26 20-04-37 - Cucoo5 sent to channel bot_testing : >>badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Bot\Mobiusbot.py", line 132, in on_message
+    output = usrapp.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 82, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Coding Projects\Game\Mobius\Apps\standby\basic_cmds.py", line 189, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+
