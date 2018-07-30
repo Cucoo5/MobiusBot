@@ -50,7 +50,7 @@ class stdbycmds(object):
         cmdlist=fn.getcommandline(message,self.commandprefix)
 
         #looks for command and runs matching function.
-        outputlist=[]
+        #outputlist=[]
 
         for cmdin in cmdlist:
             if cmdin != None:
@@ -142,9 +142,10 @@ class stdbycmds(object):
             else:
                 output=None
 
-            outputlist.append(output)
+            #outputlist.append(output)
 
-        return outputlist
+        #return outputlist
+        return output
 
     def __bothelp(self):
         '''

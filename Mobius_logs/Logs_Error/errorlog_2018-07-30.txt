@@ -50,3 +50,8 @@ IndexError: list index out of range
     command.append(line[1])
 IndexError: list index out of range
 
+2018-07-30 21-50-36 - Cucoo5 sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "C:\Users\Michael\Google Drive\Michael's Documents\Coding Projects\Game\Mobius - Dev\Bot\Mobiusbot.py", line 151, in on_message
+    await output
+TypeError: object tuple can't be used in 'await' expression
+
