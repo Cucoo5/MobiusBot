@@ -50,7 +50,7 @@ class stdbycmds(object):
         cmdlist=fn.getcommandline(message,self.commandprefix)
 
         #looks for command and runs matching function.
-        #outputlist=[]
+        #outputlist=[]  seems to be for multi commands. get rid of later.
 
         for cmdin in cmdlist:
             if cmdin != None:
