@@ -9,11 +9,12 @@ class stdbycmds(object):
     '''
     always active command system
     scrubs through messages and prepares them for input into other modules.
+    *may rename to servercmds
     '''
     def __init__(self,client,commandprefix,vnum):
-        self.commandprefix=commandprefix
-        self.vnum=vnum
-        self.client=client
+        self.commandprefix=commandprefix #bot command prefix
+        self.vnum=vnum #version number reference
+        self.client=client #used here only to make sure the client object is available
 
         #get cmdlist
         self.cmdlst=[]
@@ -34,7 +35,13 @@ class stdbycmds(object):
         self.badcnt={}
 
     def in_and_out(self,message):
+        '''
+        Takes message, processes and logs it,
+        and packs the output if a command is found
+        otherwise logs message only
 
+        Central command function
+        '''
         #get message
         self.message=message
         self.ch=self.message.channel
