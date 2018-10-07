@@ -15,6 +15,7 @@ Script for a Discord bot
 Powers a discord bot that can take inputs and post outputs.
 Can store information into a google drive for logs and save states.
 '''
+
 print("Initializing...")
 
 devstate=True
