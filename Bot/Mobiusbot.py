@@ -6,7 +6,9 @@ import sys, traceback
 
 from Bot import functions as fn
 
+#import apps here
 from Apps.standby import basic_cmds as cmdmng
+from Apps.assistant import rpassist as rpa
 
 '''
 Dev Version
@@ -70,7 +72,7 @@ def outputhandler(output):
 
     command:
         - sends messages of out type and executes command for the bot
-        - mainly for "activate" command and logoff
+        - mainly for commands and logoff
 
     * could be expanded later
     '''
@@ -179,9 +181,14 @@ async def on_ready():
     global usractivelst
     usractivelst={}
 
+    # apps initialize (Add new apps here)
     global stdby_app
     stdby_app=cmdmng.stdbycmds(activeclient,commandprefix,vnum)
 
+    global rp_assistant
+    rp_assistant=rpa.rpassistant(activeclient,commandprefix,vnum)
+
+    # user list
     global usrlst
     if usrlst != {}:
         for user in list(usrlst.keys()):
@@ -189,6 +196,7 @@ async def on_ready():
                 usrobj=usrlst[user]
                 usractivelst[user]=["standby",stdby_app,usrobj]
 
+    # sanity check
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
