@@ -82,29 +82,29 @@ def outputhandler(output):
         for i in range(len(outsys)):
             cmd=command[i]
             if cmd != None:
-                if cmd[0] == "activate":
-                    usr=cmd[1]
-                    appname=cmd[2]
-                    appactivator(usr,appname)
+                #if cmd[0] == "activate":
+                #    usr=cmd[1]
+                #    appname=cmd[2]
+                #    appactivator(usr,appname)
                 if cmd[0] == "logoff":
                     outsys.append(client.logout())
 
     return outsys
 
-def appactivator(usr,appname,client):
-    '''
-    gets the app for the user.
-    '''
-    usrnm=str(usr)
-    if appname == "standby":
-        app=stdby_app
-
-    if appname == "proto":
-        #app=mobius.proto
-        pass
-
-    global usractivelst
-    usractivelst[usrnm]=[appname,app,usr]
+#def appactivator(usr,appname,client):
+#    '''
+#    gets the app for the user.
+#    '''
+#    usrnm=str(usr)
+#    if appname == "standby":
+#        app=stdby_app
+#
+#    if appname == "proto":
+#        #app=mobius.proto
+#        pass
+#
+#    global usractivelst
+#    usractivelst[usrnm]=[appname,app,usr]
 
 #-------------------------------------------------------------------------------
 
