@@ -1,2 +1,6 @@
 2018-10-07 22-15-24 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
 2018-10-07 22-38-50 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-07 21-12-13 - Cucoo5 sent to channel bot_testing : <<time | executed: time
+2018-10-07 21-14-25 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-07 21-14-46 - Cucoo5 sent to channel bot_testing : <<time | executed: time
+2018-10-07 21-17-03 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown

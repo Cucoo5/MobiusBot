@@ -1,6 +1,6 @@
 import discord
 import os
-from time import gmtime, strftime
+from time import localtime, strftime
 import sys, traceback
 import pickle as pk
 
@@ -58,9 +58,9 @@ def getcommandline(message,commandprefix):
 
 def get_time():
     '''
-    returns time in GMT as string.
+    returns local time as string.
     '''
-    time=strftime("%Y-%m-%d %H-%M-%S", gmtime())
+    time=strftime("%Y-%m-%d %H-%M-%S", localtime())
     return time
 
 def eventlogger(msg,eventinfo,type="event"):

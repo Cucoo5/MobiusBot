@@ -1,6 +1,6 @@
 import discord
 import os
-from time import gmtime, strftime
+from time import localtime, strftime
 import sys, traceback
 
 from Bot import functions as fn
@@ -219,8 +219,8 @@ class stdbycmds(object):
 
     def __timecmd(self):
         '''
-        Gets current time in GMT
+        Gets current server time
         '''
-        time=str(self.message.timestamp)
-        msg="Current time is: "+time+" GMT"
+        time=strftime("%Y-%m-%d %H:%M:%S", localtime())
+        msg="Current time is: "+time+" EST"
         return msg

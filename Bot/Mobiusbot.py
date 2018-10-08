@@ -1,7 +1,7 @@
 import discord
 import ast
 import os
-from time import gmtime, strftime
+from time import localtime, strftime
 import sys, traceback
 
 from Bot import functions as fn
