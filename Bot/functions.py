@@ -150,7 +150,16 @@ def register(usr):
 
     else:
         userlist.write(userinfo["string"]+"\n")
-        os.makedirs(userinfo["folder"])
+
+        #make user folder profile
+        os.makedirs(userinfo["folder"]) # make user folder
+        #os.makedirs(userinfo["folder"]+"/user_rplist.txt") # folder or text only?
+        os.makedirs(userinfo["folder"]+"/user_characters")
+        os.makedirs(userinfo["folder"]+"/user_summaries")
+        os.makedirs(userinfo["folder"]+"/user_todolists")
+        os.makedirs(userinfo["folder"]+"/user_reminders")
+
+
         with open(userinfo["object"],"wb") as save:
             pk.dump(usr,save)
         save.close()
