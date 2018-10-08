@@ -151,9 +151,9 @@ def register(usr):
     else:
         userlist.write(userinfo["string"]+"\n")
 
-        #make user folder profile
+        # make user folder profile
         os.makedirs(userinfo["folder"]) # make user folder
-        #os.makedirs(userinfo["folder"]+"/user_rplist.txt") # folder or text only?
+        os.makedirs(userinfo["folder"]+"/user_rplist")
         os.makedirs(userinfo["folder"]+"/user_characters")
         os.makedirs(userinfo["folder"]+"/user_summaries")
         os.makedirs(userinfo["folder"]+"/user_todolists")

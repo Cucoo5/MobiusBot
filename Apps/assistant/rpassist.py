@@ -23,6 +23,12 @@ class  rpassistant(object):
         To Do List Manager
         Reminder Function
     App Creator, Approval System, and Archives
+
+    Additional notes:
+        - RPs will be objects with some basic info, mainly links to OOC and IC
+          as well as last active time info
+        - Character Profiles will be objects with the above items
+
     '''
     def __init__(self,client,commandprefix,vnum):
         self.commandprefix=commandprefix #bot command prefix
