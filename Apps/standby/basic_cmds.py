@@ -48,7 +48,7 @@ class stdbycmds(object):
         self.usr=self.message.author
         self.badcnt={}
         self.master=fn.getmasterobj()
-
+        output=None
 
         if self.usr not in self.badcnt:
             self.badcnt[self.usr]=0
@@ -58,6 +58,9 @@ class stdbycmds(object):
 
         #looks for command and runs matching function.
         #outputlist=[]  seems to be for multi commands. get rid of later.
+        if cmdlist == None: # temporary fix for multi command system breaking on non-command messages
+            cmdlist=[None]
+            output = None
 
         for cmdin in cmdlist:
             if cmdin != None:

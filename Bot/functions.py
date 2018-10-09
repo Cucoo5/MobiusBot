@@ -21,6 +21,9 @@ def devinfo(devstate):
 def getcommandline(message,commandprefix):
     '''
     gets line of message that contains potential commands
+
+    currently designed to look for multi commands in any message, which doesn't
+    work.
     '''
     characterlist=message.content
     state=0
@@ -123,16 +126,17 @@ class errorlogger(object):
     def errormsg(self):
 
         msg="Error Caught On Command"+"\n"
-
+        master=getmasterobj()
+        output=outputconstructor(self.client,"string",self.message.channel,msg)
         if self.notistate:
-            master=getmasterobj()
+
             msg+="Event has been logged and a notification has been sent."
+            output=outputconstructor(self.client,"string",self.message.channel,msg)
 
             msg2="An error has been found. Taceback is as follows:"+"\n"
             msg2+=self.errortrcbk
+            output=outputconstructor(self.client,"string",master,msg2,output=output)
 
-        output=outputconstructor(self.client,"string",self.message.channel,msg)
-        output=outputconstructor(self.client,"string",master,msg2,output=output)
         return output
 
 def register(usr):
