@@ -1,0 +1,61 @@
+2018-10-15 19-24-58 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 57, in in_and_out
+    cmdin,cmdcntxt=fn.getcommandline(message,self.commandprefix)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 30, in getcommandline
+    commandcontext = context.remove(commandinput)
+NameError: name 'context' is not defined
+
+2018-10-15 19-25-40 - Cucoo5 sent to channel Direct Message with Cucoo5 : <<shutdown | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 57, in in_and_out
+    cmdin,cmdcntxt=fn.getcommandline(message,self.commandprefix)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 30, in getcommandline
+    commandcontext = context.remove(commandinput)
+NameError: name 'context' is not defined
+
+2018-10-15 19-26-20 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 57, in in_and_out
+    cmdin,cmdcntxt=fn.getcommandline(message,self.commandprefix)
+TypeError: 'NoneType' object is not iterable
+
+2018-10-15 19-30-41 - Cucoo5 sent to channel bot_testing : <<echo | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 93, in in_and_out
+    msg=self.__echo(cmdcntxt)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 200, in __echo
+    if len(words) != 0:
+TypeError: object of type 'NoneType' has no len()
+
+2018-10-15 19-37-59 - Cucoo5 sent to channel bot_testing : <<echo check | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 57, in in_and_out
+    cmdin,cmdcntxt=fn.getcommandline(message,self.commandprefix)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 35, in getcommandline
+    if commandcontext != None:
+NameError: name 'commandcontext' is not defined
+
+2018-10-15 19-39-05 - Cucoo5 sent to channel Direct Message with Cucoo5 : <<shutdown | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 57, in in_and_out
+    cmdin,cmdcntxt=fn.getcommandline(message,self.commandprefix)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 35, in getcommandline
+    wordstring=None
+NameError: name 'commandcontext' is not defined
+
+2018-10-15 19-41-00 - Cucoo5 sent to channel bot_testing : <<badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 130, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 88, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 192, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+

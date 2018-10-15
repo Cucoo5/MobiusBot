@@ -142,9 +142,6 @@ class stdbycmds(object):
 
             fn.eventlogger(self.message,eventinfo)
 
-            else:
-                output=None
-
         return output
 
     def __bothelp(self):
@@ -200,7 +197,7 @@ class stdbycmds(object):
         '''
         returns a copy of the message after the command, italicized.
         '''
-        if len(words) != 0:
+        if words != None and len(words) != 0:
             msg="*"
             msg+=words
             msg+="*"

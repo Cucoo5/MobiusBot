@@ -23,26 +23,26 @@ def getcommandline(message,commandprefix):
     gets line of message that contains a potential command
     '''
     msg=message.content
-    command=None
+    command=(None,None)
     if commandprefix in msg[0:2]: # look for commandprefix at start of message.
-        conext=msg.split()
+        context=msg.split()
         commandinput=msg.split()[0]
-        commandcontext = context.remove(commandinput)
+        context.remove(commandinput)
 
         # get context of command.
         wordstring=None
-        if commandcontext != None:
-            if len(commandcontext) >=1:
+        if context != None:
+            if len(context) >=1:
                 i=0
                 wordstring=""
-                for word in commandcontext:
+                for word in context:
                     if i == 0:
                         wordstring+=word
-                            i+=1
-                        else:
-                            wordstring+=" "+word
+                        i+=1
+                    else:
+                        wordstring+=" "+word
 
-            command=(commandinput,wordstring))
+        command=(commandinput,wordstring)
 
     return command
 
