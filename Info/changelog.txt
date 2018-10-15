@@ -8,3 +8,4 @@ v0.07: Added user registration, improved command handling, and event logging
 v0.08: Fixed time module and added version log command.
 v0.09: More under-the-hood stuff. Added logout function for master. Improved directory organization.
 v0.10: Revamped the bot. Added user management system and natural command system.
+v0.11: Changed natural command system. Removed activate command.
