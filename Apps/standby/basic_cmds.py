@@ -46,7 +46,7 @@ class stdbycmds(object):
         self.message=message
         self.ch=self.message.channel
         self.usr=self.message.author
-        self.badcnt={}
+
         self.master=fn.getmasterobj()
         output=None
 
@@ -54,107 +54,97 @@ class stdbycmds(object):
             self.badcnt[self.usr]=0
 
         # get cmdin and context
-        cmdlist=fn.getcommandline(message,self.commandprefix)
+        cmdin,cmdcntxt=fn.getcommandline(message,self.commandprefix)
 
         #looks for command and runs matching function.
-        #outputlist=[]  seems to be for multi commands. get rid of later.
-        if cmdlist == None: # temporary fix for multi command system breaking on non-command messages
-            cmdlist=[None]
-            output = None
+        if cmdin != None:
+            commandinput=cmdin.strip(self.commandprefix)
+            if commandinput.lower() == "mobius":
+                commandinput=cmdcntxt.split()[0]
+                cmdcntxt=cmdcntxt.replace(commandinput+" ", "")
 
-        for cmdin in cmdlist:
-            if cmdin != None:
-                commandinput=cmdin[0].strip(self.commandprefix)
-                cmdcntxt=cmdin[1]
-                if commandinput.lower() == "mobius":
-                    commandinput=cmdcntxt.split()[0]
-                    cmdcntxt=cmdcntxt.replace(commandinput+" ", "")
+            if commandinput in self.cmdlst:
+                '''
+                Add command functions here.
+                Make sure command check matches word in command list
+                '''
 
-                if commandinput in self.cmdlst:
-                    '''
-                    Add command functions here.
-                    Make sure command check matches word in command list
-                    '''
+                if commandinput == "help":
+                    msg=self.__bothelp()
+                    output=fn.outputconstructor(self.client,"embed",self.ch,msg)
+                    eventinfo="executed: "+commandinput
 
-                    if commandinput == "help":
-                        msg=self.__bothelp()
-                        output=fn.outputconstructor(self.client,"embed",self.ch,msg)
-                        eventinfo="executed: "+commandinput
+                if commandinput=="info":
+                    msg=self.__info()
+                    output=fn.outputconstructor(self.client,"embed",self.ch,msg)
+                    eventinfo="executed: "+commandinput
 
-                    if commandinput=="info":
-                        msg=self.__info()
-                        output=fn.outputconstructor(self.client,"embed",self.ch,msg)
-                        eventinfo="executed: "+commandinput
+                if commandinput=="versionlog":
+                    msg=self.__versionlog()
+                    output=fn.outputconstructor(self.client,"embed",self.ch,msg)
+                    eventinfo="executed: "+commandinput
 
-                    if commandinput=="versionlog":
-                        msg=self.__versionlog()
-                        output=fn.outputconstructor(self.client,"embed",self.ch,msg)
-                        eventinfo="executed: "+commandinput
+                if commandinput=="badcmd":
+                    msg=self.__badcmd()
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    eventinfo="executed: "+commandinput
 
-                    if commandinput=="badcmd":
-                        msg=self.__badcmd()
-                        output=fn.outputconstructor(self.client,"string",self.ch,msg)
-                        eventinfo="executed: "+commandinput
+                if commandinput=="echo":
+                    msg=self.__echo(cmdcntxt)
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    eventinfo="executed: "+commandinput
 
-                    if commandinput=="echo":
-                        msg=self.__echo(cmdcntxt)
-                        output=fn.outputconstructor(self.client,"string",self.ch,msg)
-                        eventinfo="executed: "+commandinput
+                if commandinput=="time":
+                    msg=self.__timecmd()
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    eventinfo="executed: "+commandinput
 
-                    if commandinput=="time":
-                        msg=self.__timecmd()
-                        output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                #else:
+                #    output=fn.outputconstructor(self.client,"module",self.ch,cmdin)
+                #    eventinfo="packed info for module use."
+
+            if commandinput in self.mstcmds:
+                if self.usr==self.master:
+                    # add master commands here
+                    if commandinput == "shutdown":
+                        print("Logoff Command Received")
+                        msg = "Mobius System Shutting Down."
+                        cmd = ["logoff"]
+                        output=fn.outputconstructor(self.client,"string",self.ch,msg,command=cmd)
                         eventinfo="executed: "+commandinput
 
                     else:
-                        output=fn.outputconstructor(self.client,"module",self.ch,cmdin)
-                        eventinfo="packed info for module use."
+                        msg="Access Denied."
+                        self.badcnt[self.usr]+=1
 
-                if commandinput in self.mstcmds:
-                    if self.usr==self.master:
-                        # add master commands here
-                        if commandinput == "shutdown":
-                            print("Logoff Command Received")
-                            msg = "Mobius System Shutting Down."
-                            cmd = ["logoff"]
-                            output=fn.outputconstructor(self.client,"string",self.ch,msg,command=cmd)
-                            eventinfo="executed: "+commandinput
+                        if self.badcnt[self.usr]==5:
+                            msg+="https://i.imgur.com/LtZ9oxF.png?1"
+                            self.badcnt[self.usr]=0
 
-                        else:
-                            msg="Access Denied."
-                            self.badcnt[self.usr]+=1
+                        output=fn.outputconstructor(self.client,"string",self.ch,msg)
 
-                            if self.badcnt[self.usr]==5:
-                                msg+="https://i.imgur.com/LtZ9oxF.png?1"
-                                self.badcnt[self.usr]=0
+            if commandinput not in self.cmdlst and commandinput not in self.mstcmds:
+                msg="Command '"+commandinput+"' not available"+"\n"
 
-                            output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                self.badcnt[self.usr]+=1
+                eventinfo="Bad Command entered: "+commandinput + " | Count:" +str(self.badcnt[self.usr])
 
-                if commandinput not in self.cmdlst and commandinput not in self.mstcmds:
-                    msg="Command '"+commandinput+"' not available"+"\n"
+                if self.badcnt[self.usr]==5:
+                    msg+="https://i.imgur.com/LtZ9oxF.png?1"
+                if self.badcnt[self.usr] == 10:
+                    msg+="https://www.youtube.com/watch?v=S4bmCvekW48"
+                if self.badcnt[self.usr] == 15:
+                    msg+="https://www.youtube.com/watch?v=l60MnDJklnM"
+                    #reset bad command counter
+                    self.badcnt[self.usr]=0
 
-                    self.badcnt[self.usr]+=1
-                    eventinfo="Bad Command entered: "+commandinput + " | Count:" +str(self.badcnt[self.usr])
+                output=fn.outputconstructor(self.client,"string",self.ch,msg)
 
-                    if self.badcnt[self.usr]==5:
-                        msg+="https://i.imgur.com/LtZ9oxF.png?1"
-                    if self.badcnt[self.usr] == 10:
-                        msg+="https://www.youtube.com/watch?v=S4bmCvekW48"
-                    if self.badcnt[self.usr] == 15:
-                        msg+="https://www.youtube.com/watch?v=l60MnDJklnM"
-                        #reset bad command counter
-                        self.badcnt[self.usr]=0
-
-                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
-
-                fn.eventlogger(self.message,eventinfo)
+            fn.eventlogger(self.message,eventinfo)
 
             else:
                 output=None
 
-            #outputlist.append(output)
-
-        #return outputlist
         return output
 
     def __bothelp(self):

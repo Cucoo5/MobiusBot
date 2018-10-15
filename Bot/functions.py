@@ -20,44 +20,31 @@ def devinfo(devstate):
 
 def getcommandline(message,commandprefix):
     '''
-    gets line of message that contains potential commands
-
-    currently designed to look for multi commands in any message, which doesn't
-    work.
+    gets line of message that contains a potential command
     '''
-    characterlist=message.content
-    state=0
-    commandcharindex=0
-    endcharindex=0
+    msg=message.content
+    command=None
+    if commandprefix in msg[0:2]: # look for commandprefix at start of message.
+        conext=msg.split()
+        commandinput=msg.split()[0]
+        commandcontext = context.remove(commandinput)
 
-    linelist=characterlist.splitlines()
-
-    commandlist=[]
-
-    for line in linelist:
-        line=line.split()
-        if commandprefix in line[0]:
-            commandinput = line[0]
-            commandcontext = line.remove(commandinput)
-            wordstring=None
-            if commandcontext != None:
-                if len(commandcontext) >=1:
-                    i=0
-                    wordstring=""
-                    for word in commandcontext:
-                        if i == 0:
-                            wordstring+=word
+        # get context of command.
+        wordstring=None
+        if commandcontext != None:
+            if len(commandcontext) >=1:
+                i=0
+                wordstring=""
+                for word in commandcontext:
+                    if i == 0:
+                        wordstring+=word
                             i+=1
                         else:
                             wordstring+=" "+word
 
-            commandlist.append((commandinput,wordstring))
+            command=(commandinput,wordstring))
 
-        else:
-            continue
-
-
-    return commandlist
+    return command
 
 def get_time():
     '''
