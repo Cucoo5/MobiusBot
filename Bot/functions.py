@@ -143,12 +143,16 @@ def register(usr):
         userlist.write(userinfo["string"]+"\n")
 
         # make user folder profile
-        os.makedirs(userinfo["folder"]) # make user folder
-        os.makedirs(userinfo["folder"]+"/user_rplist")
-        os.makedirs(userinfo["folder"]+"/user_characters")
-        os.makedirs(userinfo["folder"]+"/user_summaries")
-        os.makedirs(userinfo["folder"]+"/user_todolists")
-        os.makedirs(userinfo["folder"]+"/user_reminders")
+        #make user folder
+        os.makedirs(userinfo["folder"])
+
+        #make rp assistant folder and subfolders
+        os.makedirs(userinfo["folder"]+"/rpassistant")
+        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_rplist")
+        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_characters")
+        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_summaries")
+        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_todolists")
+        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_reminders")
 
 
         with open(userinfo["object"],"wb") as save:

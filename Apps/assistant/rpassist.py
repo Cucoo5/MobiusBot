@@ -15,7 +15,7 @@ class  rpassistant(object):
             General Reminders
     User Profiles
         RP Participation List
-        Character profiles
+        Character profiles (1st to make)
             App
             Inventory
             Status
@@ -40,9 +40,12 @@ class  rpassistant(object):
 
         #get user information
         # user load system with file naming convention. need to go to Mobius_Users
+        # userinfo=packuserinfo(usr)
+        # usersubfolder=userinfo["folder"]+"/rpassistant"
 
         #Server status
         # This will be a folder Mobius_Server. Will also need logs_Server
+        serverlogsfolder="./Mobius_logs/Logs_Server/"
 
     def user_profile_creator(userinfo):
         '''
