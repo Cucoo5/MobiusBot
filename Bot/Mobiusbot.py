@@ -160,21 +160,15 @@ async def on_message(message):
 
                 ####Cannot do the below. could maybe use on rpassist.
                 # save server object on successful command
-                datetime=fn.get_time()
-                tlist=datetime.split()
-                date=tlist[0]
-                time=tlist[1]
-                tstring=date+"_"+time
-
-                def save_sslcontext(obj):
-                    return obj.__class__, (obj.protocol,)
-
-                copyreg.pickle(ssl.SSLContext, save_sslcontext)
-                context = ssl.create_default_context()
-
-                with open("./Mobius_Server/serversaves/svrsv_"+tstring+".pkl","wb") as save:
-                    pk.dump(stdby_app,save)
-                save.close()
+                #datetime=fn.get_time()
+                #tlist=datetime.split()
+                #date=tlist[0]
+                #time=tlist[1]
+                #tstring=date+"_"+time
+                #
+                #with open("./Mobius_Server/serversaves/svrsv_"+tstring+".pkl","wb") as save:
+                #    pk.dump(stdby_app,save)
+                #save.close()
 
     except:
         errlog.logerror(message)
@@ -206,23 +200,27 @@ async def on_ready():
 
     # apps initialize (Add new apps here)
     global stdby_app
-    list_of_saves = glob.glob('./Mobius_Server/serversaves/*.pkl')
-    if len(list_of_saves) == 0: #this is the initialization check
-        stdby_app=cmdmng.stdbycmds(activeclient,commandprefix,vnum)
-    else:
-        latest_save = str(max(list_of_saves, key=os.path.getctime)).replace('\\','/')
-        print(latest_save)
-        with open(latest_save,"rb") as load:
-            stdby_app = pk.load(load)
+    #list_of_saves = glob.glob('./Mobius_Server/serversaves/*.pkl')
+    #if len(list_of_saves) == 0: #this is the initialization check
+
+    stdby_app=cmdmng.stdbycmds(activeclient,commandprefix,vnum)
+
+    #else:
+    #    latest_save = str(max(list_of_saves, key=os.path.getctime)).replace('\\','/')
+    #    print(latest_save)
+    #    with open(latest_save,"rb") as load:
+    #        stdby_app = pk.load(load)
 
     global rp_assistant
-    list_of_saves = glob.glob('./Mobius_Server/rpassistantsaves/*.pkl')
-    if len(list_of_saves) == 0: #this is the initialization check
-        rp_assistant=rpa.rpassistant(activeclient,commandprefix,vnum)
-    else:
-        latest_save = str(max(list_of_saves, key=os.path.getctime)).replace('\\','/')
-        with open(latest_save,"rb") as load:
-            rp_assistant = pk.load(load)
+    #list_of_saves = glob.glob('./Mobius_Server/rpassistantsaves/*.pkl')
+    #if len(list_of_saves) == 0: #this is the initialization check
+
+    rp_assistant=rpa.rpassistant(activeclient,commandprefix,vnum)
+
+    #else:
+    #    latest_save = str(max(list_of_saves, key=os.path.getctime)).replace('\\','/')
+    #    with open(latest_save,"rb") as load:
+    #        rp_assistant = pk.load(load)
 
 
     # user list

@@ -9,4 +9,4 @@ v0.08: Fixed time module and added version log command.
 v0.09: More under-the-hood stuff. Added logout function for master. Improved directory organization.
 v0.10: Revamped the bot. Added user management system and natural command system.
 v0.11: Changed natural command system. Removed activate command.
-v0.12: The actual useful update. Added the ability to add rp character profiles to the bot.
+v0.12: Small update to include a rng command.

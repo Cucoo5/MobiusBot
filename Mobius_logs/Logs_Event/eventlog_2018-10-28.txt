@@ -1,0 +1,7 @@
+2018-10-28 20-42-10 - Cucoo5 sent to channel bot_testing : <<rng | executed: rng
+2018-10-28 20-43-43 - Cucoo5 sent to channel bot_testing : <<eng | Bad Command entered: eng | Count:1
+2018-10-28 20-43-47 - Cucoo5 sent to channel bot_testing : <<rng | executed: rng
+2018-10-28 20-51-32 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-28 20-53-14 - Cucoo5 sent to channel bot_testing : <<rng 1,10 | executed: rng
+2018-10-28 20-58-00 - Cucoo5 sent to channel bot_testing : <<rng | executed: rng
+2018-10-28 21-01-13 - Cucoo5 sent to channel bot_testing : <<rng 5 , 5 | executed: rng

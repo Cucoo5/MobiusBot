@@ -1,0 +1,43 @@
+2018-10-28 20-42-10 - Cucoo5 sent to channel bot_testing : <<rng | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 172, in on_message
+    copyreg.pickle(ssl.SSLContext, save_sslcontext)
+NameError: name 'copyreg' is not defined
+
+2018-10-28 20-43-43 - Cucoo5 sent to channel bot_testing : <<eng | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 172, in on_message
+    copyreg.pickle(ssl.SSLContext, save_sslcontext)
+NameError: name 'copyreg' is not defined
+
+2018-10-28 20-43-47 - Cucoo5 sent to channel bot_testing : <<rng | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 172, in on_message
+    copyreg.pickle(ssl.SSLContext, save_sslcontext)
+NameError: name 'copyreg' is not defined
+
+2018-10-28 20-51-32 - Cucoo5 sent to channel bot_testing : <<shutdown | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 172, in on_message
+    copyreg.pickle(ssl.SSLContext, save_sslcontext)
+NameError: name 'copyreg' is not defined
+
+2018-10-28 20-52-11 - Cucoo5 sent to channel bot_testing : <<rng 1,10 | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 132, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 104, in in_and_out
+    msg=self.__randintcmd(cmdcntxt)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 232, in __randintcmd
+    mm=minmax.split(",").strip()
+AttributeError: 'list' object has no attribute 'strip'
+
+2018-10-28 20-53-14 - Cucoo5 sent to channel bot_testing : <<rng 1,10 | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 172, in on_message
+    copyreg.pickle(ssl.SSLContext, save_sslcontext)
+NameError: name 'copyreg' is not defined
+
+2018-10-28 20-54-44 - Cucoo5 sent to channel bot_testing : <<rng rrrrrr | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 132, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 104, in in_and_out
+    msg=self.__randintcmd(cmdcntxt)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 233, in __randintcmd
+    min=int(mm[0].strip())
+ValueError: invalid literal for int() with base 10: 'rrrrrr'
+

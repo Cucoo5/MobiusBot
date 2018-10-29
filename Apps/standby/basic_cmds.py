@@ -2,6 +2,7 @@ import discord
 import os
 from time import localtime, strftime
 import sys, traceback
+import random as rand
 
 from Bot import functions as fn
 
@@ -96,6 +97,11 @@ class stdbycmds(object):
 
                 if commandinput=="time":
                     msg=self.__timecmd()
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    eventinfo="executed: "+commandinput
+
+                if commandinput=="rng":
+                    msg=self.__randintcmd(cmdcntxt)
                     output=fn.outputconstructor(self.client,"string",self.ch,msg)
                     eventinfo="executed: "+commandinput
 
@@ -214,3 +220,18 @@ class stdbycmds(object):
         time=strftime("%Y-%m-%d %H:%M:%S", localtime())
         msg="Current time is: "+time+" EST"
         return msg
+
+    def __randintcmd(self,minmax):
+        '''
+        generates a random integer number from 0-100
+        '''
+        if minmax==None:
+            min=0
+            max=100
+        else:
+            mm=minmax.split(",")
+            min=int(mm[0].strip())
+            max=int(mm[1].strip())
+        number=str(rand.randint(min,max))
+
+        return number
