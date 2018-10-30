@@ -3,6 +3,7 @@ import os
 from time import localtime, strftime
 import sys, traceback
 import pickle as pk
+from datetime import datetime, timedelta
 
 def devinfo(devstate):
     # token management
@@ -74,6 +75,22 @@ def eventlogger(msg,eventinfo,type="event"):
     with open("./Mobius_logs/Logs_Messages/"+time+"_"+channel+"_"+author+".pkl","wb") as save:
         pk.dump(msg,save)
     save.close()
+
+def msglogclearer(num_days=187):
+    '''
+    Used to manage amount of log files.
+    Keeps only those within input number of days.
+    default: 187 days
+    '''
+    date = datetime.today() - timedelta(days=num_days)
+    limitdate=str(date.year)+"-"+str(date.month)+"-"+str(date.day)
+    list_of_logs = glob.glob('./Mobius_logs/Logs_Messages/*.pkl')
+    for files in list_of_logs:
+        fn=files.split('\\')
+        file=files.replace('\\','/')
+        comparedate=fn[1].split(' ')
+        if comparedate[0] < limitdate:
+            os.remove(file)
 
 
 class errorlogger(object):

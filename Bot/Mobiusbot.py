@@ -5,6 +5,7 @@ import glob
 import pickle as pk
 from time import localtime, strftime
 import sys, traceback
+import asyncio
 
 from Bot import functions as fn
 
@@ -183,6 +184,8 @@ def status_send():
     outstatus=activeclient.send_message(ch, msg)
     return outstatus
 
+
+
 # on initalize
 @client.event
 async def on_ready():
@@ -239,5 +242,45 @@ async def on_ready():
     print('--------------------------')
     await status_send()
 
+#-------------------------------------------------------------------------------
+
+# timer based functions
+
+#example:
+async def my_background_task():
+
+    await client.wait_until_ready()
+    counter = 0
+    channel = discord.Object(id='443052380800417802')
+    while not client.is_closed:
+        await client.send_message(channel, 'Hours without something going horribly wrong: '+ str(counter))
+        counter += 1
+        await asyncio.sleep(3600) # task runs every 3600 seconds (1 hr)
+
+async def server_tick():
+    '''
+    syncs bot time with midnight EST and then
+    executes functions at midnight EST
+    '''
+    await client.wait_until_ready()
+    channel = discord.Object(id='506628142455324692') # mobius_news channel
+
+    while not client.is_closed:
+        # find wait time to midnight
+        datetime = fn.get_time()
+        time=datetime.split()[1]
+        tlist=time.split('-')
+        hour=int(tlist[0])
+        minute=int(tlist[1])
+        second=int(tlist[2])
+        hours=24-hour
+        minutes=0-minute
+        seconds=0-second
+        waittime=hours*3600+minutes*60+seconds
+
+        await client.send_message(channel, 'Mobius Server Update')
+        await asyncio.sleep(waittime) # task waits until midnight
+
+client.loop.create_task(my_background_task())
 
 client.run(TOKEN)

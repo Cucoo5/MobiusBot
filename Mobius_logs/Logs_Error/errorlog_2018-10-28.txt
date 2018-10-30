@@ -41,3 +41,10 @@ NameError: name 'copyreg' is not defined
     min=int(mm[0].strip())
 ValueError: invalid literal for int() with base 10: 'rrrrrr'
 
+2018-10-28 22-09-21 - PsychoSustic sent to channel bot_testing : <<shutdown | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 132, in on_message
+    svroutput = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 149, in in_and_out
+    fn.eventlogger(self.message,eventinfo)
+UnboundLocalError: local variable 'eventinfo' referenced before assignment
+
