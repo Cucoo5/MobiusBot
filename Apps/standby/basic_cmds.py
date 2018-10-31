@@ -122,7 +122,7 @@ class stdbycmds(object):
                     else:
                         msg="Access Denied."
                         self.badcnt[self.usr]+=1
-
+                        eventinfo="Access Restricted to following: "+commandinput
                         if self.badcnt[self.usr]==5:
                             msg+="https://i.imgur.com/LtZ9oxF.png?1"
                             self.badcnt[self.usr]=0

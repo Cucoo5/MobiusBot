@@ -1,0 +1,7 @@
+2018-10-30 00-02-43 - PsychoSustic sent to channel bot_testing : <<rng 1 , 10 | executed: rng
+2018-10-30 10-12-05 - Cucoo5 sent to channel bot_testing : <<versionlog | executed: versionlog
+2018-10-30 22-25-50 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-30 22-28-36 - Cucoo5 sent to channel bot_testing : <<info | executed: info
+2018-10-30 22-28-46 - Cucoo5 sent to channel bot_testing : <<echo | executed: echo
+2018-10-30 22-28-53 - Cucoo5 sent to channel bot_testing : <<help | executed: help
+2018-10-30 22-32-43 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown

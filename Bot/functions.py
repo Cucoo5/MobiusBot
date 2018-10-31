@@ -191,16 +191,17 @@ def packuserinfo(usr):
     discriminator=str(usr.discriminator)
 
     userinfo=username+discriminator+"_"+id
-    usrdict=userdict(userinfo)
+    usrdict=userdict(userinfo,usr)
     return usrdict
 
-def userdict(userinfo):
+def userdict(userinfo,usr):
     '''
     gets the folder and file string
     '''
     userinfofolder="./Mobius_Users/"+userinfo
     infofile=userinfofolder+"/userinfo_"+userinfo+".pkl"
-    usrdict={"string":userinfo,"folder":userinfofolder,"object":infofile}
+    usrdict={"string":userinfo,"folder":userinfofolder,"object":usr}
+
     return usrdict
 
 

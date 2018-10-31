@@ -1,0 +1,14 @@
+2018-10-30 22-26-54 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 137, in on_message
+    if usrinfo in usrlst:
+NameError: name 'usrinfo' is not defined
+
+2018-10-30 22-29-11 - Cucoo5 sent to channel bot_testing : <<badcmd | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 138, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 89, in in_and_out
+    msg=self.__badcmd()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 198, in __badcmd
+    raise ValueError("Error testing")
+ValueError: Error testing
+

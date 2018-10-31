@@ -43,7 +43,7 @@ vnum=vnumlist[-1]
 docfile.close()
 
 errlog=None
-usractivelst=None
+#usractivelst=None
 stdby_app=None
 
 #-------------------------------------------------------------------------------
@@ -52,14 +52,18 @@ stdby_app=None
 master=fn.getmasterobj()
 
 # registered user object list
-userlist=open("./Mobius_logs/Logs_User/userlist.txt","r")
 usrlst={}
-for line in userlist:
-    userinfo=line.strip()
-    usr=fn.userdict(userinfo)
+
+#get user object files
+list_of_users = glob.glob('./Mobius_Users/*/*.pkl')
+for file in list_of_users:
+    f=file.replace('\\','/')
+    with open(f,"rb") as load:
+        user = pk.load(load)
+    usr=fn.packuserinfo(user)
+    userinfo=usr['string']
     usrlst[userinfo]=usr
 
-userlist.close()
 
 #-------------------------------------------------------------------------------
 
@@ -130,11 +134,9 @@ async def on_message(message):
 
     try:
 
-        svroutput = stdby_app.in_and_out(message)
+        if userinfo in usrlst:
+            output = stdby_app.in_and_out(message)
 
-
-        if userinfo in usractivelst:
-            output = svroutput
         # remove initialize system.
         #    usrstatus=usractivelst[userinfo][0]
         #    usrapp=usractivelst[userinfo][1]
@@ -145,13 +147,11 @@ async def on_message(message):
         #            output = usrapp.in_and_out(message)
 
         else:
-            usractivelst[userinfo]=["standby",stdby_app,usrobj]
             msg="Welcome, "+usrnm+"."+"\n"
             msg+="For convenience, your user information has been saved to the Mobius database."+"\n"
             msg2=fn.register(usrobj)
             eventinfo = "user registered: "+usrobj.name
             fn.eventlogger(message,eventinfo)
-            output = svroutput
             await client.send_message(usrobj, msg)
             await client.send_message(master, msg2)
 
@@ -198,8 +198,8 @@ async def on_ready():
     errlog=fn.errorlogger(activeclient)
 
     # context menu system
-    global usractivelst
-    usractivelst={}
+    #global usractivelst
+    #usractivelst={}
 
     # apps initialize (Add new apps here)
     global stdby_app
@@ -227,12 +227,12 @@ async def on_ready():
 
 
     # user list
-    global usrlst
-    if usrlst != {}:
-        for user in list(usrlst.keys()):
-            if user not in usractivelst:
-                usrobj=usrlst[user]
-                usractivelst[user]=["standby",stdby_app,usrobj]
+    #global usrlst
+    #if usrlst != {}:
+    #    for user in list(usrlst.keys()):
+    #        if user not in usractivelst:
+    #            usrobj=usrlst[user]
+    #            usractivelst[user]=["standby",stdby_app,usrobj]
 
     # sanity check
     print('Logged in as')
@@ -263,24 +263,31 @@ async def server_tick():
     executes functions at midnight EST
     '''
     await client.wait_until_ready()
-    channel = discord.Object(id='506628142455324692') # mobius_news channel
+    channel = discord.Object(id='443052380800417802') # mobius_news channel
 
+    counter=1
+    print("server_tick")
     while not client.is_closed:
         # find wait time to midnight
         datetime = fn.get_time()
         time=datetime.split()[1]
         tlist=time.split('-')
-        hour=int(tlist[0])
-        minute=int(tlist[1])
-        second=int(tlist[2])
-        hours=24-hour
-        minutes=0-minute
-        seconds=0-second
-        waittime=hours*3600+minutes*60+seconds
 
-        await client.send_message(channel, 'Mobius Server Update')
+        #time components converted to seconds
+        hour=int(tlist[0])*3600
+        minute=int(tlist[1])*60
+        second=int(tlist[2])
+        timesum=hour+minute+second
+        midnight=24*3600
+        waittime=midnight-timesum
+
+        counter+=1
+        print("waittime: ",waittime)
+        print("time: ",time)
+        await client.send_message(channel, 'Mobius Server system check: '+str(counter))
         await asyncio.sleep(waittime) # task waits until midnight
 
 client.loop.create_task(my_background_task())
+client.loop.create_task(server_tick())
 
 client.run(TOKEN)
