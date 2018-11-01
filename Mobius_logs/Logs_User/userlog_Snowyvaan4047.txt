@@ -1,1 +1,0 @@
-{'username': 'Snowyvaan', 'id': '206906598495485952', 'discriminator': '4047'}

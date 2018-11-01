@@ -4,6 +4,8 @@ from time import localtime, strftime
 import sys, traceback
 import pickle as pk
 from datetime import datetime, timedelta
+import glob
+
 
 def devinfo(devstate):
     # token management
@@ -150,17 +152,13 @@ def register(usr):
 
     userinfo=packuserinfo(usr) #get string used in folder and object location
 
-    #initalize and open userlist, which contains backup of info
-    userlist=open("./Mobius_logs/Logs_User/userlist.txt","a+")
 
-    if os.path.exists(userinfo["folder"]):
+    if os.path.exists(userinfo["file"]):
         msg="User has already been registered: "+str(usr)
 
     else:
-        userlist.write(userinfo["string"]+"\n")
-
         # make user folder profile
-        #make user folder
+        # make user folder
         os.makedirs(userinfo["folder"])
 
         #make rp assistant folder and subfolders
@@ -171,14 +169,12 @@ def register(usr):
         os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_todolists")
         os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_reminders")
 
-
-        with open(userinfo["object"],"wb") as save:
+        #save user object
+        with open(userinfo["file"],"wb") as save:
             pk.dump(usr,save)
         save.close()
 
         msg="User has been registered: "+str(usr)
-
-    userlist.close()
 
     return msg
 
@@ -200,10 +196,9 @@ def userdict(userinfo,usr):
     '''
     userinfofolder="./Mobius_Users/"+userinfo
     infofile=userinfofolder+"/userinfo_"+userinfo+".pkl"
-    usrdict={"string":userinfo,"folder":userinfofolder,"object":usr}
+    usrdict={"string":userinfo,"folder":userinfofolder,"file":infofile,"object":usr}
 
     return usrdict
-
 
 def getmasterobj():
     with open("./Info/masterinfo.pkl","rb") as load:

@@ -1,0 +1,78 @@
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\base_events.py", line 783, in create_connection
+    raise exceptions[0]
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\base_events.py", line 770, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\selector_events.py", line 450, in sock_connect
+    return (yield from fut)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\selector_events.py", line 480, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+TimeoutError: [Errno 10060] Connect call failed ('104.16.58.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10060] Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "run.py", line 1, in <module>
+    from Bot import Mobiusbot
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 399, in <module>
+    client.run(TOKEN)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\discord\client.py", line 519, in run
+    self.loop.run_until_complete(self.start(*args, **kwargs))
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\base_events.py", line 473, in run_until_complete
+    return future.result()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\discord\client.py", line 491, in start
+    yield from self.connect()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10060] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]]
+Task was destroyed but it is pending!
+task: <Task pending coro=<update_warning() running at D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py:348> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x00000204C8D54FA8>()]>>
+Task was destroyed but it is pending!
+task: <Task pending coro=<server_tick() running at D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py:394> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x00000204C8DA5288>()]>>
+Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\websockets\protocol.py:428> exception=ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)>
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\websockets\protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\websockets\protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\websockets\protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\websockets\protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\site-packages\websockets\framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\streams.py", line 674, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\streams.py", line 464, in _wait_for_data
+    yield from self._waiter
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36\lib\asyncio\selector_events.py", line 725, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000204C8D42320>

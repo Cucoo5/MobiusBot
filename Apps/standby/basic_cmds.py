@@ -59,7 +59,7 @@ class stdbycmds(object):
 
         #looks for command and runs matching function.
         if cmdin != None:
-            commandinput=cmdin.strip(self.commandprefix)
+            commandinput=cmdin.strip(self.commandprefix).lower()
             if commandinput.lower() == "mobius":
                 commandinput=cmdcntxt.split()[0]
                 cmdcntxt=cmdcntxt.replace(commandinput+" ", "")
@@ -119,13 +119,20 @@ class stdbycmds(object):
                         output=fn.outputconstructor(self.client,"string",self.ch,msg,command=cmd)
                         eventinfo="executed: "+commandinput
 
-                    else:
-                        msg="Access Denied."
-                        self.badcnt[self.usr]+=1
-                        eventinfo="Access Restricted to following: "+commandinput
-                        if self.badcnt[self.usr]==5:
-                            msg+="https://i.imgur.com/LtZ9oxF.png?1"
-                            self.badcnt[self.usr]=0
+                    if commandinput == "restart":
+                        print("Reload Command Received")
+                        msg = "Mobius System Restarting."
+                        cmd = ["reload"]
+                        output=fn.outputconstructor(self.client,"string",self.ch,msg,command=cmd)
+                        eventinfo="executed: "+commandinput
+
+                else:
+                    msg="Access Denied."
+                    self.badcnt[self.usr]+=1
+                    eventinfo="Access Restricted to following: "+commandinput
+                    if self.badcnt[self.usr]==5:
+                        msg+="https://i.imgur.com/LtZ9oxF.png?1"
+                        self.badcnt[self.usr]=0
 
                         output=fn.outputconstructor(self.client,"string",self.ch,msg)
 

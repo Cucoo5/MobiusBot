@@ -6,3 +6,4 @@ time - Input: N/A | Output: current time in GMT.
 badcmd - Input: N/A | Output: Error Testing
 rng - Input: <min>,<max> | Output: a random integer ranging from input min and input max number. Defaults to 0-100.
 MASTER - shutdown - Input: N/A | Output: Logs Mobius off
+MASTER - restart - Input: N/A | Output: Restarts Mobius

@@ -5,3 +5,8 @@
 2018-10-30 22-28-46 - Cucoo5 sent to channel bot_testing : <<echo | executed: echo
 2018-10-30 22-28-53 - Cucoo5 sent to channel bot_testing : <<help | executed: help
 2018-10-30 22-32-43 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-30 22-34-04 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-30 22-34-32 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-30 22-37-45 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-30 22-40-04 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
+2018-10-30 22-40-41 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown

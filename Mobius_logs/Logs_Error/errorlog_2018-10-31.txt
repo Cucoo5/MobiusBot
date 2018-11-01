@@ -1,0 +1,42 @@
+2018-10-31 00-43-08 - Kristia sent to channel bot_testing : <<rng 2 , 10 | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 152, in on_message
+    msg2=fn.register(usrobj)
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 175, in register
+    with open(userinfo["object"],"wb") as save:
+TypeError: expected str, bytes or os.PathLike object, not Member
+
+2018-10-31 16-20-35 - Kristia sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-10-31 16-26-01 - Kristia sent to channel bot_testing : Ok, I did get its message of registering me for my convinience | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-10-31 16-26-54 - Kristia sent to channel general : I think I shouldn't speak in the bot testing room | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-10-31 16-30-52 - Kristia sent to channel bot_testing : Good, I'm anomaly to it (deal with it, bot) | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-10-31 16-31-10 - Kristia sent to channel Direct Message with Kristia : Ok, good bot | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-10-31 16-49-22 - Kristia sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
+2018-10-31 17-03-06 - Kristia sent to channel bot_testing : <<help | Traceback (most recent call last):
+  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 158, in on_message
+    if output != None:
+UnboundLocalError: local variable 'output' referenced before assignment
+
