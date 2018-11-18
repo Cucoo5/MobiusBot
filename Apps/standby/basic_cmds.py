@@ -3,6 +3,7 @@ import os
 from time import localtime, strftime
 import sys, traceback
 import random as rand
+import aiohttp
 
 from Bot import functions as fn
 
@@ -105,9 +106,22 @@ class stdbycmds(object):
                     output=fn.outputconstructor(self.client,"string",self.ch,msg)
                     eventinfo="executed: "+commandinput
 
-                #else:
-                #    output=fn.outputconstructor(self.client,"module",self.ch,cmdin)
-                #    eventinfo="packed info for module use."
+                if commandinput=="register":
+                    msg,cmd=self.__registercmd()
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg,command=cmd)
+                    eventinfo="executed: "+commandinput
+
+                if commandinput=="save":
+                    fn.msgattachments(self.usr,message)
+                    msg="Attachment saved."
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    eventinfo="executed: "+commandinput
+
+                if commandinput=="retrieve":
+                    msg,type=self.__getfilecmd(cmdcntxt)
+                    output=fn.outputconstructor(self.client,type,self.ch,msg)
+                    
+                    eventinfo="executed: "+commandinput
 
             if commandinput in self.mstcmds:
                 if self.usr==self.master:
@@ -134,7 +148,7 @@ class stdbycmds(object):
                         msg+="https://i.imgur.com/LtZ9oxF.png?1"
                         self.badcnt[self.usr]=0
 
-                        output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
 
             if commandinput not in self.cmdlst and commandinput not in self.mstcmds:
                 msg="Command '"+commandinput+"' not available"+"\n"
@@ -242,3 +256,33 @@ class stdbycmds(object):
         number=str(rand.randint(min,max))
 
         return number
+
+    def __registercmd(self):
+        '''
+        manual register command
+        '''
+        msg="Performing Registration Check"
+        cmd = ["register"]
+        return msg,cmd
+
+    def __getfilecmd(self,words):
+        usr=self.usr
+        usrinfo=fn.packuserinfo(usr)
+        clist=words.split(",")
+        fldr=usrinfo["folder"]+"/"+clist[0]
+        fl=fldr+"/"+clist[1]
+
+        if os.path.exists(fldr):
+            if os.path.exists(fl):
+                type="file"
+                msg=fl
+
+            else:
+                type="string"
+                msg="Error: File does not exist."
+
+        else:
+            type="string"
+            msg="Error: Folder does not exist."
+
+        return msg,type

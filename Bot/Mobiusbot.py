@@ -4,9 +4,12 @@ import os
 import glob
 import pickle as pk
 from time import localtime, strftime
-from os.path import getmtime
 import sys, traceback
 import asyncio
+import sys, traceback
+from datetime import datetime, timedelta, date, time
+from os.path import getmtime
+import aiohttp
 
 from Bot import functions as fn
 
@@ -70,7 +73,7 @@ for file in list_of_users:
 #-------------------------------------------------------------------------------
 
 # bot output handler
-def outputhandler(output):
+def outputhandler(output,usr):
     '''
     Takes output and performs appropriate action
 
@@ -86,6 +89,11 @@ def outputhandler(output):
     * could be expanded later
     '''
     global activeclient
+    global master
+    global usrlst
+
+    userdict=fn.packuserinfo(usr)
+    userinfo=userdict["string"]
 
     outsys,command=fn.unpackoutput(output)
 
@@ -98,6 +106,19 @@ def outputhandler(output):
 
                 if cmd[0] == "reload":
                     outsys.append(os.execv(sys.executable, ['python']+sys.argv))
+
+                if cmd[0] == "register":
+                    msg2,status=fn.register(usr)
+                    if userinfo in usrlst and status == False:
+                        msg="Greetings, "+str(usr.name)+"."+"\n"
+                        msg+="You are already registered within the Mobius database."+"\n"
+                        outsys.append(client.send_message(usr, msg))
+                    elif userinfo in usrlst and status == True:
+                        msg="Greetings, "+str(usr.name)+"."+"\n"
+                        msg+="Your user information has been reset."+"\n"
+                        outsys.append(client.send_message(usr, msg))
+
+
 
     return outsys
 
@@ -119,27 +140,31 @@ async def on_message(message):
         return
 
     try:
-        output = stdby_app.in_and_out(message)
+        global commandprefix
+        if message.content.startswith(commandprefix):
 
-        if userinfo not in usrlst:
-            msg="Welcome, "+usrnm+"."+"\n"
-            msg+="For convenience, your user information has been saved to the Mobius database."+"\n"
-            msg2=fn.register(usrobj)
-            eventinfo = "user registered: "+usrobj.name
-            fn.eventlogger(message,eventinfo)
-            await client.send_message(usrobj, msg)
-            await client.send_message(master, msg2)
+            output = stdby_app.in_and_out(message)
 
-            usrlst[userinfo]=usrobj
+            if output != None:
+                for output in outputhandler(output,usrobj):
+                    await output
+                    
 
-        if output != None:
-            for output in outputhandler(output):
-                await output
+            if userinfo not in usrlst:
+                msg="Welcome, "+usrnm+"."+"\n"
+                msg+="For convenience, your user information has been saved to the Mobius database."+"\n"
+                msg2,status=fn.register(usrobj)
+                eventinfo = "user registered: "+usrobj.name
+                fn.eventlogger(message,eventinfo)
+                await client.send_message(usrobj, msg)
+                await client.send_message(master, msg2)
+
+                usrlst[userinfo]=usrobj
 
     except:
         errlog.logerror(message)
         output=errlog.errormsg()
-        for output in outputhandler(output):
+        for output in outputhandler(output,usrobj):
             await output
 
 def status_send():
@@ -185,7 +210,6 @@ async def on_ready():
 
 # timer based functions
 
-#example:
 async def update_warning():
 
     await client.wait_until_ready()
@@ -198,44 +222,34 @@ async def update_warning():
 
     mentionprefix =''
 
+    warningtimes={"minutes":(1,5,10,30),"hours":(1,5,10)}
+    warningtimedeltas=[]
+    for key,value in warningtimes.items():
+        if key == "minutes":
+            for minute in value:
+                timed=timedelta(minutes=minute)
+                warningtimedeltas.append(timed)
+        elif key == "hours":
+            for hour in value:
+                timed=timedelta(hours=hour)
+                warningtimedeltas.append(timed)
+
+    warningtimedeltas.sort(reverse=True)
+
     global devstate
 
     while not client.is_closed:
 
         # find wait time to next warning
-        datetime = fn.get_time()
-        time=datetime.split()[1]
-        tlist=time.split('-')
+        currenttime = datetime.today()
+        midnight=datetime.combine(date.today()+timedelta(days=1),time(hour=0))
+        timetomidnight=midnight-currenttime
+        midnightwaittime=timetomidnight.seconds
 
-        #time components converted to seconds
-        hour=int(tlist[0])*3600
-        minute=int(tlist[1])*60
-        second=int(tlist[2])
-        timesum=hour+minute+second
-        midnight=24*3600
-        midnightwaittime=midnight-timesum
-        minutewaittime=60-second
-        hourwaittime=60-minute
+        minutewaittime=60-currenttime.second
 
         #create time to midnight string
-        hoursto=midnightwaittime//3600
-        minutesto=(midnightwaittime-(hoursto*3600))//60
-        secondsto=((midnightwaittime-(hoursto*3600))-(minutesto*60))
-
-        if hoursto < 10:
-            hstr="0"+str(hoursto)
-        else:
-            hstr=str(hoursto)
-        if minutesto < 10:
-            mstr="0"+str(minutesto)
-        else:
-            mstr=str(minutesto)
-        if secondsto < 10:
-            sstr="0"+str(secondsto)
-        else:
-            sstr=str(secondsto)
-
-        timetoupdatestr=hstr+":"+mstr+":"+sstr
+        timestr=str(timetomidnight)
 
         #check for updates and creates warning.
         for f, mtime in Watched_files_MTimes:
@@ -244,47 +258,14 @@ async def update_warning():
                 state=1
 
         if state != 0:
-            if (midnightwaittime-(10*3600)) >= 0:
-                #set a 10 hr warning
-                timetowait = (midnightwaittime-(10*3600))
+            for timed in warningtimedeltas:
+                if timetomidnight>=timed:
+                    timeto=timetomidnight-timed
+                    timetowait=timeto.seconds
+                    if timed == warningtimedeltas[-1]:
+                        state=3
+                    break
 
-            elif (midnightwaittime-(5*3600)) >= 0:
-                #set 5 hr warning
-                timetowait = (midnightwaittime-(5*3600))
-
-            elif (midnightwaittime-(2*3600)) >= 0:
-                #set 2 hr warning
-                timetowait = (midnightwaittime-(2*3600))
-
-            elif (midnightwaittime-(1*3600)) >= 0:
-                #set 1 hr warning
-                timetowait = (midnightwaittime-(1*3600))
-
-            elif (midnightwaittime-(30*60)) >= 0:
-                #set 30 min warning
-                timetowait = (midnightwaittime-(30*60))
-
-            elif (midnightwaittime-(15*60)) >= 0:
-                #set 15 min warning
-                timetowait = (midnightwaittime-(15*60))
-
-            elif (midnightwaittime-(10*60)) >= 0:
-                #set 10 min warning
-                timetowait = (midnightwaittime-(10*60))
-
-            elif (midnightwaittime-(5*60)) >= 0:
-                #set 10 min warning
-                timetowait = (midnightwaittime-(5*60))
-
-            elif (midnightwaittime-(2*60)) >= 0:
-                #set 2 min warning
-                timetowait = (midnightwaittime-(2*60))
-                state = 3
-
-            elif (midnightwaittime-(1*60)) >= 0:
-                #set 1 min warning
-                timetowait = (midnightwaittime-(1*60))
-                state = 3
 
             if state == 1 and devstate != True:
                 mentionprefix='@everyone: '
@@ -294,12 +275,13 @@ async def update_warning():
             elif state == 3:
                 mentionprefix='@here: '
 
-            await client.send_message(channel, mentionprefix+'Mobius System Update Found. Updating in '+timetoupdatestr)
+            await client.send_message(channel, mentionprefix+'Mobius System Update Found. Updating in '+timestr.split(".")[0])
 
         else:
             timetowait = minutewaittime
 
         await asyncio.sleep(timetowait) # task runs by default every minute, unless an update is found.
+
 
 async def server_tick():
     '''
@@ -325,25 +307,18 @@ async def server_tick():
         #check for updates and restart
         for f, mtime in Watched_files_MTimes:
             if getmtime(f) != mtime:
-                print("Update Found. Restarting. \n--------------------------")
+                print("Preparing Update. Restarting. \n--------------------------")
                 await client.send_message(channel1, 'Restarting...')
-                await os.execv(sys.executable, ['python']+sys.argv)
+                os.execv(sys.executable, ['python']+sys.argv)
 
         # find wait time to midnight
-        datetime = fn.get_time()
-        time=datetime.split()[1]
-        tlist=time.split('-')
-
-        #time components converted to seconds
-        hour=int(tlist[0])*3600
-        minute=int(tlist[1])*60
-        second=int(tlist[2])
-        timesum=hour+minute+second
-        midnight=24*3600
-        waittime=midnight-timesum
+        currenttime = datetime.today()
+        midnight=datetime.combine(date.today()+timedelta(days=1),time(hour=0))
+        timetomidnight=midnight-currenttime
+        waittime=timetomidnight.seconds
 
         print("waittime: ",waittime)
-        print("time: ",time)
+        print("time: ",currenttime)
 
         await client.send_message(channel2, 'Mobius Server system check: '+str(counter))
         counter+=1

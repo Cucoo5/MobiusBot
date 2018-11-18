@@ -1,1 +1,1 @@
-Fix logging system to use user object system. Potentially convert to class.
+Figure out if multiprocessing could optimize parts of the bot.

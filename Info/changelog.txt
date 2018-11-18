@@ -10,3 +10,4 @@ v0.09: More under-the-hood stuff. Added logout function for master. Improved dir
 v0.10: Revamped the bot. Added user management system and natural command system.
 v0.11: Changed natural command system. Removed activate command.
 v0.12: Cleaned the system, added background tasks, and added RNG command. Added automatic and manual restart system with warnings.
+v0.13: The almost useful update. Added file saving and retrieval. 

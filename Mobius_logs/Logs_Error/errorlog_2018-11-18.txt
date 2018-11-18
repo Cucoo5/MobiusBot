@@ -1,0 +1,250 @@
+2018-11-18 15-03-30 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 145, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    fn.msgattachments(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 252, in msgattachments
+    print(msg.attachments)
+TypeError: 'list' object is not callable
+
+2018-11-18 15-04-19 - Cucoo5 sent to channel bot_testing : <<restart | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 145, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 51, in in_and_out
+    fn.msgattachments(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 252, in msgattachments
+    print(msg.attachments)
+TypeError: 'list' object is not callable
+
+2018-11-18 15-27-59 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 52, in in_and_out
+    fn.msgattachments(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 254, in msgattachments
+    for key,value in attch.items():
+AttributeError: 'list' object has no attribute 'items'
+
+2018-11-18 15-28-39 - Cucoo5 sent to channel bot_testing : <<restart | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 52, in in_and_out
+    fn.msgattachments(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 254, in msgattachments
+    for item in attch:
+AttributeError: 'list' object has no attribute 'items'
+
+2018-11-18 15-53-48 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 52, in in_and_out
+    fn.msgattachments(message)
+TypeError: msgattachments() missing 1 required positional argument: 'msg'
+
+2018-11-18 15-55-07 - Cucoo5 sent to channel bot_testing : <<restart | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 52, in in_and_out
+    fn.msgattachments(self.usr,message)
+TypeError: msgattachments() missing 1 required positional argument: 'msg'
+
+2018-11-18 15-55-50 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 52, in in_and_out
+    fn.msgattachments(self.usr,message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 258, in msgattachments
+    filename=line["fielname"]
+KeyError: 'fielname'
+
+2018-11-18 16-52-46 - Cucoo5 sent to channel bot_testing : <<info | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 52, in in_and_out
+    fn.msgattachments(self.usr,message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\functions.py", line 273, in msgattachments
+    data = r.read(chunk_size)
+NameError: name 'chunk_size' is not defined
+
+2018-11-18 17-26-21 - Cucoo5 sent to channel bot_testing : <<save | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 117, in in_and_out
+    output=fn.outputconstructor(self.client,"string",self.ch,msg,command=cmd)
+UnboundLocalError: local variable 'cmd' referenced before assignment
+
+2018-11-18 17-27-47 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 121, in in_and_out
+    msg,type=__getfilecmd(self,cmdcntxt)
+NameError: name '_stdbycmds__getfilecmd' is not defined
+
+2018-11-18 17-28-40 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 121, in in_and_out
+    msg,type=self.__getfilecmd(self,cmdcntxt)
+TypeError: __getfilecmd() takes 2 positional arguments but 3 were given
+
+2018-11-18 17-29-08 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 121, in in_and_out
+    msg,type=self.__getfilecmd(cmdcntxt)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 269, in __getfilecmd
+    usrinfo=packuserinfo(usr)
+NameError: name 'packuserinfo' is not defined
+
+2018-11-18 17-29-32 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 407, in write_bytes
+    result = stream.send(value)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\helpers.py", line 191, in _gen_form_data
+    yield from self._writer.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 969, in serialize
+    yield from part.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 768, in serialize
+    yield from self._maybe_encode_stream(self._serialize_obj())
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 820, in _maybe_encode_stream
+    yield from stream
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 792, in _serialize_io
+    chunk = obj.read(self._chunk_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 307: character maps to <undefined>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    await output
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\client.py", line 1235, in send_file
+    filename=filename, content=content, tts=tts)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 202, in _request
+    yield from resp.start(conn, read_until_eof)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 640, in start
+    message = yield from httpstream.read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 641, in read
+    result = yield from super().read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 476, in read
+    yield from self._waiter
+aiohttp.errors.ClientRequestError: Can not write request body for https://discordapp.com/api/v6/channels/443052380800417802/messages
+
+2018-11-18 17-29-47 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 407, in write_bytes
+    result = stream.send(value)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\helpers.py", line 191, in _gen_form_data
+    yield from self._writer.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 969, in serialize
+    yield from part.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 768, in serialize
+    yield from self._maybe_encode_stream(self._serialize_obj())
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 820, in _maybe_encode_stream
+    yield from stream
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 792, in _serialize_io
+    chunk = obj.read(self._chunk_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 307: character maps to <undefined>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    await output
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\client.py", line 1235, in send_file
+    filename=filename, content=content, tts=tts)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 202, in _request
+    yield from resp.start(conn, read_until_eof)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 640, in start
+    message = yield from httpstream.read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 641, in read
+    result = yield from super().read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 476, in read
+    yield from self._waiter
+aiohttp.errors.ClientRequestError: Can not write request body for https://discordapp.com/api/v6/channels/443052380800417802/messages
+
+2018-11-18 17-30-46 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 407, in write_bytes
+    result = stream.send(value)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\helpers.py", line 191, in _gen_form_data
+    yield from self._writer.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 969, in serialize
+    yield from part.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 768, in serialize
+    yield from self._maybe_encode_stream(self._serialize_obj())
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 820, in _maybe_encode_stream
+    yield from stream
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 792, in _serialize_io
+    chunk = obj.read(self._chunk_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 307: character maps to <undefined>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    await output
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\client.py", line 1235, in send_file
+    filename=filename, content=content, tts=tts)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 202, in _request
+    yield from resp.start(conn, read_until_eof)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 640, in start
+    message = yield from httpstream.read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 641, in read
+    result = yield from super().read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 476, in read
+    yield from self._waiter
+aiohttp.errors.ClientRequestError: Can not write request body for https://discordapp.com/api/v6/channels/443052380800417802/messages
+
+2018-11-18 17-30-59 - Cucoo5 sent to channel bot_testing : <<retrieve downloads,ovJBrx2.jpg | Traceback (most recent call last):
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 407, in write_bytes
+    result = stream.send(value)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\helpers.py", line 191, in _gen_form_data
+    yield from self._writer.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 969, in serialize
+    yield from part.serialize()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 768, in serialize
+    yield from self._maybe_encode_stream(self._serialize_obj())
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 820, in _maybe_encode_stream
+    yield from stream
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\multipart.py", line 792, in _serialize_io
+    chunk = obj.read(self._chunk_size)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 307: character maps to <undefined>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 150, in on_message
+    await output
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\client.py", line 1235, in send_file
+    filename=filename, content=content, tts=tts)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client.py", line 202, in _request
+    yield from resp.start(conn, read_until_eof)
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\client_reqrep.py", line 640, in start
+    message = yield from httpstream.read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 641, in read
+    result = yield from super().read()
+  File "C:\Users\mwyoo\AppData\Local\Programs\Python\Python36-32\lib\site-packages\aiohttp\streams.py", line 476, in read
+    yield from self._waiter
+aiohttp.errors.ClientRequestError: Can not write request body for https://discordapp.com/api/v6/channels/443052380800417802/messages
+

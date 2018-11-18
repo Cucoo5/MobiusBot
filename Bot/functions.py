@@ -4,7 +4,11 @@ from time import localtime, strftime
 import sys, traceback
 import pickle as pk
 from datetime import datetime, timedelta
+from os.path import getmtime
 import glob
+import aiohttp
+import urllib3
+import certifi
 
 
 def devinfo(devstate):
@@ -85,13 +89,12 @@ def msglogclearer(num_days=187):
     default: 187 days
     '''
     date = datetime.today() - timedelta(days=num_days)
-    limitdate=str(date.year)+"-"+str(date.month)+"-"+str(date.day)
+    limittime=date.timestamp()
     list_of_logs = glob.glob('./Mobius_logs/Logs_Messages/*.pkl')
-    for files in list_of_logs:
-        fn=files.split('\\')
-        file=files.replace('\\','/')
-        comparedate=fn[1].split(' ')
-        if comparedate[0] < limitdate:
+    logsMTimes = [(f,getmtime(f)) for f in list_of_logs]
+    for f,t in logsMTimes:
+        comparetime=float(t)
+        if comparetime < limittime:
             os.remove(file)
 
 
@@ -152,22 +155,28 @@ def register(usr):
 
     userinfo=packuserinfo(usr) #get string used in folder and object location
 
+    status=False
 
     if os.path.exists(userinfo["file"]):
         msg="User has already been registered: "+str(usr)
 
     else:
-        # make user folder profile
-        # make user folder
-        os.makedirs(userinfo["folder"])
+        if not os.path.exists(userinfo["folder"]):
+            # make user folder profile
+            # make user folder
+            os.makedirs(userinfo["folder"])
 
-        #make rp assistant folder and subfolders
-        os.makedirs(userinfo["folder"]+"/rpassistant")
-        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_rplist")
-        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_characters")
-        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_summaries")
-        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_todolists")
-        os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_reminders")
+        if not os.path.exists(userinfo["folder"]+"/downloads"):
+            os.makedirs(userinfo["folder"]+"/downloads")
+
+        if not os.path.exists(userinfo["folder"]+"/rpassistant"):
+            #make rp assistant folder and subfolders
+            os.makedirs(userinfo["folder"]+"/rpassistant")
+            os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_rplist")
+            os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_characters")
+            os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_summaries")
+            os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_todolists")
+            os.makedirs(userinfo["folder"]+"/rpassistant"+"/user_reminders")
 
         #save user object
         with open(userinfo["file"],"wb") as save:
@@ -175,8 +184,9 @@ def register(usr):
         save.close()
 
         msg="User has been registered: "+str(usr)
+        status=True
 
-    return msg
+    return msg,status
 
 def packuserinfo(usr):
     '''
@@ -222,8 +232,8 @@ def outputconstructor(client,outtype,ch,msg,command=None,output=None):
     elif outtype == "embed":
         outsys = client.send_message(ch, embed=msg)
 
-    elif outtype == "module":
-        outsys = (ch,msg)
+    elif outtype == "file":
+        outsys = client.send_file(ch, fp=msg)
 
     if output == None:
         output=[(outsys,command)]
@@ -242,3 +252,30 @@ def unpackoutput(output):
         return outsys,command
     else:
         return None,None
+
+
+def msgattachments(usr,msg):
+    '''
+    checks message for attachments and stores it.
+    '''
+    http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
+    attch=msg.attachments
+
+    usrinfo=packuserinfo(usr)
+    usrdlfolder=usrinfo["folder"]+"/downloads"
+    if not os.path.exists(usrdlfolder):
+        os.makedirs(usrdlfolder)
+
+    # go through message attachments and download to user file
+    for line in attch:
+        fileurl=line["url"]
+        filename=line["filename"]
+        r = http.request('GET',fileurl,preload_content=False)
+        with open(usrdlfolder+"/"+filename, 'wb') as out:
+            while True:
+                data = r.read(2**16)
+                if not data:
+                    break
+                out.write(data)
+
+        r.release_conn()

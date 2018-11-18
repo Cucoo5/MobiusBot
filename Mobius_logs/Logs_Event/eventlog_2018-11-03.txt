@@ -1,0 +1,5 @@
+2018-11-03 09-10-16 - Cucoo5 sent to channel bot_testing : <<info | executed: info
+2018-11-03 13-01-58 - PsychoSustic sent to channel bot_testing : <<REGISTER | executed: register
+2018-11-03 21-55-06 - Kristia sent to channel bot_testing : <<info | executed: info
+2018-11-03 21-55-09 - Kristia sent to channel bot_testing : <<info | user registered: Kristia
+2018-11-03 21-55-20 - Kristia sent to channel bot_testing : <<register | executed: register

@@ -1,0 +1,13 @@
+2018-11-13 20-29-16 - Cucoo5 sent to channel bot_testing : <<info | executed: info
+2018-11-13 20-31-54 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-13 20-52-20 - Cucoo5 sent to channel announcements : <<restart | executed: restart
+2018-11-13 20-52-44 - Cucoo5 sent to channel bot_testing : <<register | executed: register
+2018-11-13 20-54-35 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-13 20-54-42 - Cucoo5 sent to channel bot_testing : <<register | executed: register
+2018-11-13 20-55-14 - Cucoo5 sent to channel bot_testing : <<register | executed: register
+2018-11-13 20-55-23 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-13 20-55-31 - Cucoo5 sent to channel bot_testing : <<register | executed: register
+2018-11-13 20-55-31 - Cucoo5 sent to channel bot_testing : <<register | user registered: Cucoo5
+2018-11-13 21-03-54 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-13 21-04-12 - Cucoo5 sent to channel bot_testing : <<register | executed: register
+2018-11-13 21-04-37 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown

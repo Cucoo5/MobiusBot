@@ -15,15 +15,7 @@
 2018-11-01 17-58-19 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
 2018-11-01 18-01-27 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
 2018-11-01 18-21-35 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
-2018-11-01 19-10-55 - Cucoo5 sent to channel bot_testing : <<info | executed: info
-2018-11-01 19-10-55 - Cucoo5 sent to channel bot_testing : <<info | user registered: Cucoo5
-2018-11-01 19-11-12 - Cucoo5 sent to channel bot_testing : <<info | executed: info
-2018-11-01 19-11-12 - Cucoo5 sent to channel bot_testing : <<info | user registered: Cucoo5
-2018-11-01 19-11-24 - Cucoo5 sent to channel bot_testing : <<info | executed: info
-2018-11-01 19-11-24 - Cucoo5 sent to channel bot_testing : <<info | user registered: Cucoo5
-2018-11-01 19-12-02 - Cucoo5 sent to channel error_reports : FOUND THE PROBLEM
-I'm a derp. I forgot to have it update the user list. | user registered: Cucoo5
-2018-11-01 19-15-13 - Cucoo5 sent to channel bot_testing : <<info | executed: info
-2018-11-01 19-15-13 - Cucoo5 sent to channel bot_testing : <<info | user registered: Cucoo5
-2018-11-01 19-15-22 - Cucoo5 sent to channel bot_testing : <<info | executed: info
-2018-11-01 19-15-27 - Cucoo5 sent to channel bot_testing : <<help | executed: help
+2018-11-01 18-34-13 - PsychoSustic sent to channel bot_testing : <<RNG 1,2 | executed: rng
+2018-11-01 18-57-09 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-01 18-58-29 - Cucoo5 sent to channel bot_testing : <<info | executed: info
+2018-11-01 19-03-05 - Cucoo5 sent to channel bot_testing : <<info | executed: info
