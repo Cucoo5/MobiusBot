@@ -6,10 +6,12 @@ import pickle as pk
 from time import localtime, strftime
 import sys, traceback
 import asyncio
-import sys, traceback
 from datetime import datetime, timedelta, date, time
 from os.path import getmtime
+import random as rand
 import aiohttp
+import urllib3
+import certifi
 
 from Bot import functions as fn
 
@@ -68,7 +70,7 @@ for file in list_of_users:
         user = pk.load(load)
     usr=fn.packuserinfo(user)
     userinfo=usr['string']
-    usrlst[userinfo]=usr
+    usrlst[userinfo]={"usrobj":usr}
 
 #-------------------------------------------------------------------------------
 
@@ -148,9 +150,10 @@ async def on_message(message):
             if output != None:
                 for output in outputhandler(output,usrobj):
                     await output
-                    
+
 
             if userinfo not in usrlst:
+                fn.desktopiniclr()
                 msg="Welcome, "+usrnm+"."+"\n"
                 msg+="For convenience, your user information has been saved to the Mobius database."+"\n"
                 msg2,status=fn.register(usrobj)
@@ -159,7 +162,7 @@ async def on_message(message):
                 await client.send_message(usrobj, msg)
                 await client.send_message(master, msg2)
 
-                usrlst[userinfo]=usrobj
+                usrlst[userinfo]={"usrobj":usrobj}
 
     except:
         errlog.logerror(message)
@@ -303,6 +306,7 @@ async def server_tick():
     while not client.is_closed:
 
         fn.msglogclearer()
+        fn.desktopiniclr()
 
         #check for updates and restart
         for f, mtime in Watched_files_MTimes:

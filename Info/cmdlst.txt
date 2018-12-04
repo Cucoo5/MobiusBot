@@ -4,9 +4,10 @@ versionlog - Input: N/A | Output: lists version history
 echo - Input: message | Output: a copy of the message after the command, italicized.
 time - Input: N/A | Output: current time in GMT.
 badcmd - Input: N/A | Output: Error Testing
-rng - Input: <min>,<max> | Output: a random integer ranging from input min and input max number. Defaults to 0-100.
+rng - Input: <min>,<max> | Output: a random integer ranging from input min and input max number. Default 0 to 100.
 register - Input: N/A | Output: Manual register check.
 save - Input: <file attachment> | Output: N/A
-retrieve - Input <folder name>, <file name> | Output: Sends back file as attachment
+retrieve - Input <file name> | Output: Sends back file as attachment.
+filelist - Input N/A | Output: All files accessible to user.
 MASTER - shutdown - Input: N/A | Output: Logs Mobius off
 MASTER - restart - Input: N/A | Output: Restarts Mobius

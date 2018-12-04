@@ -1,14 +1,27 @@
 import discord
+import ast
 import os
+import glob
+import pickle as pk
 from time import localtime, strftime
 import sys, traceback
-import pickle as pk
-from datetime import datetime, timedelta
+import asyncio
+import sys, traceback
+from datetime import datetime, timedelta, date, time
 from os.path import getmtime
-import glob
+import random as rand
 import aiohttp
 import urllib3
 import certifi
+
+import matplotlib.pyplot as plt
+
+from html.parser import HTMLParser
+from urllib import parse
+from urllib.request import urlopen
+from urllib.request import urlretrieve
+import networkx as nx
+import html2text
 
 
 def devinfo(devstate):
@@ -253,29 +266,137 @@ def unpackoutput(output):
     else:
         return None,None
 
+def desktopiniclr():
+    desktopinilist=[x.replace("\\","/") for x in glob.glob("./**/desktop.ini",recursive=True)]
+    for line in desktopinilist:
+        os.remove(line)
 
-def msgattachments(usr,msg):
-    '''
-    checks message for attachments and stores it.
-    '''
-    http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
-    attch=msg.attachments
 
+
+class LinkParser(HTMLParser):
+
+    # This is a function that HTMLParser normally has
+    # but we are adding some functionality to it
+    def handle_starttag(self, tag, attrs):
+        # We are looking for the begining of a link. Links normally look
+        # like <a href="www.someurl.com"></a>
+        if tag == 'a':
+            for (key, value) in attrs:
+                if key == 'href':
+                    # We are grabbing the new URL. We are also adding the
+                    # base URL to it. For example:
+                    # www.netinstructions.com is the base and
+                    # somepage.html is the new URL (a relative URL)
+                    #
+                    # We combine a relative URL with the base URL to create
+                    # an absolute URL like:
+                    # www.netinstructions.com/somepage.html
+                    newUrl = parse.urljoin(self.baseUrl, value)
+                    # And add it to our colection of links:
+                    self.links = self.links + [newUrl]
+
+    # This is a new function that we are creating to get links
+    # that our spider() function will call
+    def getLinks(self, url,restriction=""):
+        self.links = []
+        # Remember the base URL which will be important when creating
+        # absolute URLs
+        self.baseUrl = url + restriction
+        # Use the urlopen function from the standard Python 3 library
+        response = urlopen(url)
+        # Make sure that we are looking at HTML and not other things that
+        # are floating around on the internet (such as
+        # JavaScript files, CSS, or .PDFs for example)
+        if 'text/html' in response.getheader('Content-Type'):
+            htmlBytes = response.read()
+            # Note that feed() handles Strings well, but not bytes
+            # (A change from Python 2.x to Python 3.x)
+            htmlString = htmlBytes.decode("utf-8")
+            self.feed(htmlString)
+            return htmlString,self.links #htmlString, self.links
+        if 'text/plain' in response.getheader('Content-Type'):
+            return url,[]
+        else:
+            return "",[]
+
+def spider(url, maxPages):
+    pagesToVisit = [url]
+    numberVisited = 0
+    foundWord = False
+
+    allpages=[url]
+
+    G=nx.Graph()
+
+    # The main loop. Create a LinkParser and get all the links on the page.
+    # Also search the page for the word or string
+    # In our getLinks function we return the web page
+    # (this is useful for searching for the word)
+    # and we return a set of links from that web page
+    # (this is useful for where to go next)
+
+    while numberVisited < maxPages and pagesToVisit != []:
+        # Start from the beginning of our collection of pages to visit:
+        url = pagesToVisit[0]
+
+        pagesToVisit = pagesToVisit[1:]
+
+        G.add_node(url)
+
+        try:
+            print(numberVisited, "Visiting:", url)
+            parser = LinkParser()
+            data, links = parser.getLinks(url)
+            limlinks=[l for l in links if "." in l]
+            for l in limlinks:
+                if l not in allpages:
+                    pagesToVisit = pagesToVisit + [l]
+                    allpages.append(l)
+
+            numberVisited = numberVisited +1
+
+            for link in links:
+                G.add_edge(url,link)
+
+        except:
+            print(" **Failed to parse page!**")
+
+    return G,allpages
+
+
+def getusrfolderfilelist(usr):
+    '''
+    Creates a dictionary for the user of their files and folders
+    '''
     usrinfo=packuserinfo(usr)
-    usrdlfolder=usrinfo["folder"]+"/downloads"
-    if not os.path.exists(usrdlfolder):
-        os.makedirs(usrdlfolder)
+    fldr=usrinfo["folder"]
 
-    # go through message attachments and download to user file
-    for line in attch:
-        fileurl=line["url"]
-        filename=line["filename"]
-        r = http.request('GET',fileurl,preload_content=False)
-        with open(usrdlfolder+"/"+filename, 'wb') as out:
-            while True:
-                data = r.read(2**16)
-                if not data:
-                    break
-                out.write(data)
+    listoffldrs=[x[0].replace("\\","/").replace(fldr,"") for x in os.walk(fldr)]
+    listoffldrs.remove("")
 
-        r.release_conn()
+    completelist=[x.replace("\\","/").replace(fldr,"") for x in glob.glob(fldr+"/*/**",recursive=True)]
+    l2=[]
+    for line in completelist:
+        if line[-1]=="/":
+            l2.append(line[:-1])
+        else:
+            l2.append(line)
+
+    filelist=[x for x in l2 if x not in listoffldrs]
+
+    folderlist={}
+    for foldername in listoffldrs:
+        if foldername not in folderlist:
+            folderlist[foldername]=[]
+        for filepath in filelist:
+            filepathlist=filepath.split("/")
+            filename=filepathlist[-1]
+            folderpathlist=filepathlist[:-1]
+            folderpath=""
+            for x in folderpathlist:
+                folderpath+=(x+"/")
+
+            if folderpath in foldername+"/":
+                folderlist[foldername].append(filename)
+
+    return folderlist

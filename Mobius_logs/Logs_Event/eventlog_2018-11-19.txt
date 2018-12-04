@@ -1,0 +1,62 @@
+2018-11-19 18-45-41 - Cucoo5 sent to channel bot_testing : <<info | executed: info
+2018-11-19 18-45-51 - Cucoo5 sent to channel bot_testing : <<filelist | Bad Command entered: filelist | Count:1
+2018-11-19 18-46-40 - Cucoo5 sent to channel bot_testing : <<filelist | Bad Command entered: filelist | Count:2
+2018-11-19 18-46-58 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 18-47-34 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 18-47-40 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 18-49-15 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 18-49-59 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 18-50-45 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 18-50-50 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 18-55-33 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 18-55-59 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 18-56-04 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 18-57-04 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-03-20 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 19-03-26 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-08-25 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 19-08-30 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-09-27 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 19-09-31 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-10-21 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 19-10-26 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-11-07 - Cucoo5 sent to channel bot_testing : <<retrieve info2.txt | executed: retrieve
+2018-11-19 19-15-28 - Cucoo5 sent to channel bot_testing : <<help | executed: help
+2018-11-19 19-17-16 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 19-17-20 - Cucoo5 sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-18-19 - PsychoSustic sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-18-50 - Cucoo5 sent to channel bot_testing : <<restart | executed: restart
+2018-11-19 19-19-02 - PsychoSustic sent to channel bot_testing : <<filelist | executed: filelist
+2018-11-19 19-19-11 - PsychoSustic sent to channel bot_testing : <<rng 1,10 | executed: rng
+2018-11-19 19-19-24 - PsychoSustic sent to channel bot_testing : <<gofackyourself | Bad Command entered: gofackyourself | Count:1
+2018-11-19 19-19-34 - PsychoSustic sent to channel bot_testing : <<dildo's | Bad Command entered: dildo's | Count:2
+2018-11-19 19-19-45 - PsychoSustic sent to channel bot_testing : <<cucoolikesthebooty | Bad Command entered: cucoolikesthebooty | Count:3
+2018-11-19 19-20-03 - PsychoSustic sent to channel bot_testing : <<cucooweshouldplaysomethingagainsometime | Bad Command entered: cucooweshouldplaysomethingagainsometime | Count:4
+2018-11-19 19-20-42 - PsychoSustic sent to channel bot_testing : <<cucooihavesomethinghighlysuperduperultraimportanttoaskofyou | Bad Command entered: cucooihavesomethinghighlysuperduperultraimportanttoaskofyou | Count:5
+2018-11-19 19-21-59 - PsychoSustic sent to channel bot_testing : <<nou | Bad Command entered: nou | Count:6
+2018-11-19 19-22-13 - Cucoo5 sent to channel bot_testing : <<echo nou | executed: echo
+2018-11-19 19-22-19 - PsychoSustic sent to channel bot_testing : <<no u | Bad Command entered: no | Count:7
+2018-11-19 19-22-28 - PsychoSustic sent to channel bot_testing : <<no_u | Bad Command entered: no_u | Count:8
+2018-11-19 19-22-59 - PsychoSustic sent to channel bot_testing : <<canweallagreeputtinginnon-existentcommandsisfunasitgets? | Bad Command entered: canweallagreeputtinginnon-existentcommandsisfunasitgets? | Count:9
+2018-11-19 19-23-30 - Cucoo5 sent to channel bot_testing : <<onedaytherewillbemore | Bad Command entered: onedaytherewillbemore | Count:1
+2018-11-19 19-23-51 - PsychoSustic sent to channel bot_testing : <<kill | Bad Command entered: kill | Count:10
+2018-11-19 19-24-22 - PsychoSustic sent to channel bot_testing : <<POOTIS | Bad Command entered: pootis | Count:11
+2018-11-19 19-24-35 - PsychoSustic sent to channel bot_testing : <<ENGINEER.PUTDISPENSERHERE | Bad Command entered: engineer.putdispenserhere | Count:12
+2018-11-19 19-24-49 - PsychoSustic sent to channel bot_testing : <<MMMMEEEEEDIC | Bad Command entered: mmmmeeeeedic | Count:13
+2018-11-19 19-25-00 - PsychoSustic sent to channel bot_testing : <<CHRIS.COMEON!COMEON!HURRY!HURRY! | Bad Command entered: chris.comeon!comeon!hurry!hurry! | Count:14
+2018-11-19 19-25-27 - Cucoo5 sent to channel bot_testing : <<incoherent screaming | Bad Command entered: incoherent | Count:2
+2018-11-19 19-25-38 - PsychoSustic sent to channel bot_testing : <<SCREAMING | Bad Command entered: screaming | Count:15
+2018-11-19 19-25-54 - PsychoSustic sent to channel bot_testing : <<reset | Bad Command entered: reset | Count:1
+2018-11-19 19-26-05 - PsychoSustic sent to channel bot_testing : <<restart | Access Restricted to following: restart
+2018-11-19 19-27-13 - Cucoo5 sent to channel bot_testing : <<rng | executed: rng
+2018-11-19 19-27-21 - PsychoSustic sent to channel bot_testing : <<rng 1,100 | executed: rng
+2018-11-19 19-27-23 - Cucoo5 sent to channel bot_testing : <<help | executed: help
+2018-11-19 19-27-28 - PsychoSustic sent to channel bot_testing : <<shutdown | Access Restricted to following: shutdown
+2018-11-19 19-27-44 - PsychoSustic sent to channel bot_testing : <<rng | executed: rng
+2018-11-19 19-27-49 - PsychoSustic sent to channel bot_testing : <<rng | executed: rng
+2018-11-19 19-27-52 - PsychoSustic sent to channel bot_testing : <<RNG | executed: rng
+2018-11-19 19-27-54 - PsychoSustic sent to channel bot_testing : <<rng | executed: rng
+2018-11-19 19-28-02 - Cucoo5 sent to channel bot_testing : <<save https://i.imgur.com/LtZ9oxF.png?1 | executed: save
+2018-11-19 19-28-46 - PsychoSustic sent to channel bot_testing : <<echo WE SHOULD PLAY SOMETHING CUCOO | executed: echo
+2018-11-19 19-30-42 - Cucoo5 sent to channel bot_testing : <<echo floofs | executed: echo
+2018-11-19 19-31-14 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown

@@ -248,3 +248,46 @@ Traceback (most recent call last):
     yield from self._waiter
 aiohttp.errors.ClientRequestError: Can not write request body for https://discordapp.com/api/v6/channels/443052380800417802/messages
 
+2018-11-18 21-20-53 - Cucoo5 sent to channel bot_testing : <<save | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 115, in in_and_out
+    msg=self.__msgattachments()
+TypeError: __msgattachments() missing 1 required positional argument: 'msg'
+
+2018-11-18 21-21-58 - Cucoo5 sent to channel bot_testing : <<save | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 146, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 115, in in_and_out
+    msg=self.__msgattachments()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 322, in __msgattachments
+    http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
+NameError: name 'urllib3' is not defined
+
+2018-11-18 21-24-33 - Cucoo5 sent to channel bot_testing : <<save | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 149, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 125, in in_and_out
+    msg=self.__msgattachments()
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 335, in __msgattachments
+    usrinfo=packuserinfo(self.usr)
+NameError: name 'packuserinfo' is not defined
+
+2018-11-18 21-25-46 - Cucoo5 sent to channel bot_testing : <<retrieve | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 149, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 130, in in_and_out
+    msg,type,status=self.__getfilecmd(cmdcntxt)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 283, in __getfilecmd
+    usrinfo=fn.packuserinfo(usr)
+UnboundLocalError: local variable 'fn' referenced before assignment
+
+2018-11-18 21-27-04 - Cucoo5 sent to channel bot_testing : <<retrieve | Traceback (most recent call last):
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 149, in on_message
+    output = stdby_app.in_and_out(message)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 130, in in_and_out
+    msg,type,status=self.__getfilecmd(cmdcntxt)
+  File "C:\Users\mwyoo\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 284, in __getfilecmd
+    filename=words.strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+

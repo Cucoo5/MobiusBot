@@ -1,9 +1,19 @@
 import discord
+import ast
 import os
+import glob
+import pickle as pk
 from time import localtime, strftime
 import sys, traceback
+import asyncio
+import sys, traceback
+from datetime import datetime, timedelta, date, time
+from os.path import getmtime
 import random as rand
 import aiohttp
+import urllib3
+import certifi
+
 
 from Bot import functions as fn
 
@@ -112,16 +122,22 @@ class stdbycmds(object):
                     eventinfo="executed: "+commandinput
 
                 if commandinput=="save":
-                    fn.msgattachments(self.usr,message)
-                    msg="Attachment saved."
+                    msg=self.__msgattachments()
                     output=fn.outputconstructor(self.client,"string",self.ch,msg)
                     eventinfo="executed: "+commandinput
 
                 if commandinput=="retrieve":
-                    msg,type=self.__getfilecmd(cmdcntxt)
+                    msg,type,status=self.__getfilecmd(cmdcntxt)
                     output=fn.outputconstructor(self.client,type,self.ch,msg)
-                    
                     eventinfo="executed: "+commandinput
+                    if status == 1:
+                        raise ValueError("Multiple Files Found in retrieval.")
+
+                if commandinput=="filelist":
+                    msg=self.__getfolderfilelist()
+                    output=fn.outputconstructor(self.client,"embed",self.ch,msg)
+                    eventinfo="executed: "+commandinput
+
 
             if commandinput in self.mstcmds:
                 if self.usr==self.master:
@@ -266,23 +282,130 @@ class stdbycmds(object):
         return msg,cmd
 
     def __getfilecmd(self,words):
+        '''
+        retrieve a saved file in folder
+        '''
         usr=self.usr
         usrinfo=fn.packuserinfo(usr)
-        clist=words.split(",")
-        fldr=usrinfo["folder"]+"/"+clist[0]
-        fl=fldr+"/"+clist[1]
+        filename=words.strip()
+        fldr=usrinfo["folder"]
 
-        if os.path.exists(fldr):
-            if os.path.exists(fl):
-                type="file"
-                msg=fl
+        status=0
 
-            else:
-                type="string"
-                msg="Error: File does not exist."
+        f=glob.glob(fldr+"/**/"+filename,recursive=True)
+        if len(f)==1:
+            msg=f[0].replace("\\","/")
+            type="file"
 
-        else:
+        elif len(f)==0:
+            msg="Error: File not found."
             type="string"
-            msg="Error: Folder does not exist."
 
-        return msg,type
+        elif len(f)>1:
+            msg="Error: Multiple files found."
+            type="string"
+            status=1
+
+        return msg,type,status
+
+    def __getfolderfilelist(self):
+        '''
+        retrieve all folders and files available to user
+        '''
+        usr=self.usr
+
+        embed = discord.Embed(title="User", description="File List", color=0xeee657)
+
+        folderdict=fn.getusrfolderfilelist(usr)
+
+        n=0
+        for key,value in folderdict.items():
+            if len(value) != 0:
+                n+=1
+                embed.add_field(name="Folder: "+key,value=str(value))
+
+        if n==0:
+            embed.add_field(name="No Files",value="Found.")
+
+        return embed
+
+
+    def __msgattachments(self):
+        '''
+        checks message for attachments and stores it
+        '''
+        http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',ca_certs=certifi.where())
+        attch= self.message.attachments
+
+        usrinfo=fn.packuserinfo(self.usr)
+        usrdlfolder=usrinfo["folder"]+"/downloads"
+        if not os.path.exists(usrdlfolder):
+            os.makedirs(usrdlfolder)
+            fn.desktopiniclr()
+
+        # go through message attachments and download to user file
+        if len(attch) != 0:
+            for line in attch:
+                fileurl=line["url"]
+                filename=line["filename"]
+                filechecklist=glob.glob(usrinfo["folder"]+"/*/**/"+filename,recursive=True)
+                if len(filechecklist)!=0:
+                    msg="Cannot save file. File already exists in another directory.\n"
+                    for line in filechecklist:
+                        l=line.replace("\\","/").replace(usrinfo["folder"],"")
+                        msg+=l+"\n"
+
+                else:
+                    msg="Attachment saved."
+
+                r = http.request('GET',fileurl,preload_content=False)
+                with open(usrdlfolder+"/"+filename, 'wb') as out:
+                    while True:
+                        data = r.read(2**16)
+                        if not data:
+                            break
+                        out.write(data)
+
+                r.release_conn()
+        else:
+            msg="No files found. Please attach files to save."
+
+        return msg
+
+    def __movefilecmd(self,context):
+        '''
+        moves file to selected folder
+        '''
+
+        folderfilelist=context.split(",").strip()
+        filecheck= folderfilelist[0]
+        foldercheck= folderfilelist[1]
+
+        folderdict=fn.getusrfolderfilelist(usr)
+
+        usrinfo=packuserinfo(usr)
+        fldr=usrinfo["folder"]
+
+        folderfound=False
+        filefound=False
+
+        originfolder=""
+
+        for key,value in folderdict.items():
+            if key == foldercheck:
+                folderfound=True
+
+            if filecheck in value:
+                filefound=True
+                originfolder=key
+
+            if key == foldercheck and filecheck in value:
+                msg="File already in folder."
+                break
+
+
+        if folderfound and filefound:
+            os.rename(fldr+originfolder+filecheck,fldr+foldercheck+filecheck)
+
+        elif folderfound==False and filefound==False:
+            
