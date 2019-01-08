@@ -13,7 +13,7 @@ import random as rand
 import aiohttp
 import urllib3
 import certifi
-
+import string
 
 from Bot import functions as fn
 
@@ -136,6 +136,16 @@ class stdbycmds(object):
                 if commandinput=="filelist":
                     msg=self.__getfolderfilelist()
                     output=fn.outputconstructor(self.client,"embed",self.ch,msg)
+                    eventinfo="executed: "+commandinput
+
+                if commandinput=="movefile":
+                    msg=self.__movefilecmd(self,cmdcntxt)
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
+                    eventinfo="executed: "+commandinput
+
+                if commandinput=="renamefile":
+                    msg=self.__renamefilecmd(self,cmdcntxt)
+                    output=fn.outputconstructor(self.client,"string",self.ch,msg)
                     eventinfo="executed: "+commandinput
 
 
@@ -377,13 +387,17 @@ class stdbycmds(object):
         moves file to selected folder
         '''
 
-        folderfilelist=context.split(",").strip()
+        folderfilelist=context.strip().split(",")
         filecheck= folderfilelist[0]
         foldercheck= folderfilelist[1]
+        if foldercheck[0] != "/":
+            foldercheck="/"+foldercheck
+        if foldercheck[-1] != "/":
+            foldercheck+="/"
 
-        folderdict=fn.getusrfolderfilelist(usr)
+        folderdict=getusrfolderfilelist(self.usr)
 
-        usrinfo=packuserinfo(usr)
+        usrinfo=packuserinfo(self.usr)
         fldr=usrinfo["folder"]
 
         folderfound=False
@@ -392,20 +406,77 @@ class stdbycmds(object):
         originfolder=""
 
         for key,value in folderdict.items():
-            if key == foldercheck:
+            if key+"/" == foldercheck:
                 folderfound=True
 
             if filecheck in value:
                 filefound=True
-                originfolder=key
+                originfolder=key+"/"
 
-            if key == foldercheck and filecheck in value:
-                msg="File already in folder."
-                break
+        differentfolders=False
+
+        if originfolder != foldercheck and filefound:
+            differentfolders=True
+
+        elif originfolder == foldercheck and filefound:
+            msg="File already in folder."
 
 
-        if folderfound and filefound:
+        if folderfound and filefound and differentfolders:
             os.rename(fldr+originfolder+filecheck,fldr+foldercheck+filecheck)
+            msg="File moved."
 
         elif folderfound==False and filefound==False:
-            
+            msg="Error: Folder and File not found."
+        elif folderfound and filefound==False:
+            msg="Error: File not found."
+        elif folderfound==False and filefound:
+            msg="Error: Folder not found."
+
+        return msg
+
+    def __renamefilecmd(self,context):
+        fileorig=context.strip().split(",")[0]
+        filerename=context.strip().split(",")[1]
+
+        extcheck1=fileorig.split(".")[-1]
+        extcheck1=filerename.split(".")[-1]
+
+        renamecheck=False
+        extcheck=False
+
+        invalidChars = set(string.punctuation.replace("_", "").replace(".", ""))
+
+        msg=""
+
+        if extcheck1==extcheck2:
+            if len(filerename.split(".")) <= 2:
+                extcheck=True
+
+            if any(char in invalidChars for char in filerename) or extcheck == False:
+                msg="Error: Cannot Rename File."
+
+            else:
+                renamecheck = True
+
+        folderdict=getusrfolderfilelist(self.usr)
+
+        usrinfo=packuserinfo(self.usr)
+        fldr=usrinfo["folder"]
+
+        filefound=False
+
+        originfolder=""
+
+        for key,value in folderdict.items():
+            if fileorig in value:
+                filefound=True
+                originfolder=key+"/"
+
+        if filefound and renamecheck:
+            os.rename(fldr+originfolder+fileorig,fldr+originfolder+filerename)
+
+        else:
+            msg+="\n"+"rename failure"
+
+        return msg

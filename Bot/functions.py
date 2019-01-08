@@ -368,13 +368,37 @@ def getusrfolderfilelist(usr):
     '''
     Creates a dictionary for the user of their files and folders
     '''
+
+    filelist,listoffldrs=getpathlist(usr)
+
+    folderlist={}
+    for foldername in listoffldrs:
+        foldername=foldername.replace(fldr,"")
+        if foldername not in folderlist and foldername != "":
+            folderlist[foldername]=[]
+        for filepath in filelist:
+            filepathlist=filepath.replace(fldr,"").split("/")
+            filename=filepathlist[-1]
+            folderpathlist=filepathlist[:-1]
+            folderpath=""
+            for x in folderpathlist:
+                folderpath+=(x+"/")
+
+            if folderpath == foldername+"/":
+                folderlist[foldername].append(filename)
+
+    return folderlist
+
+def getpathlist(usr):
+    '''
+    gets file and folder path list for usr
+    '''
     usrinfo=packuserinfo(usr)
     fldr=usrinfo["folder"]
 
-    listoffldrs=[x[0].replace("\\","/").replace(fldr,"") for x in os.walk(fldr)]
-    listoffldrs.remove("")
+    listoffldrs=[x[0].replace("\\","/") for x in os.walk(fldr)]
 
-    completelist=[x.replace("\\","/").replace(fldr,"") for x in glob.glob(fldr+"/*/**",recursive=True)]
+    completelist=[x.replace("\\","/") for x in glob.glob(fldr+"/*/**",recursive=True)]
     l2=[]
     for line in completelist:
         if line[-1]=="/":
@@ -384,19 +408,4 @@ def getusrfolderfilelist(usr):
 
     filelist=[x for x in l2 if x not in listoffldrs]
 
-    folderlist={}
-    for foldername in listoffldrs:
-        if foldername not in folderlist:
-            folderlist[foldername]=[]
-        for filepath in filelist:
-            filepathlist=filepath.split("/")
-            filename=filepathlist[-1]
-            folderpathlist=filepathlist[:-1]
-            folderpath=""
-            for x in folderpathlist:
-                folderpath+=(x+"/")
-
-            if folderpath in foldername+"/":
-                folderlist[foldername].append(filename)
-
-    return folderlist
+    return filelist,listoffldrs
