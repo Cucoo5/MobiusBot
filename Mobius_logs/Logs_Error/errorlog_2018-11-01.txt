@@ -1,9 +1,0 @@
-2018-11-01 17-09-57 - Kristia sent to channel bot_testing : <<badcmd | Traceback (most recent call last):
-  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Bot\Mobiusbot.py", line 141, in on_message
-    output = stdby_app.in_and_out(message)
-  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 89, in in_and_out
-    msg=self.__badcmd()
-  File "D:\Google Drive\Michael's Documents\Misc\Coding Projects\Mobius System\Mobius - Dev\Apps\standby\basic_cmds.py", line 205, in __badcmd
-    raise ValueError("Error testing")
-ValueError: Error testing
-

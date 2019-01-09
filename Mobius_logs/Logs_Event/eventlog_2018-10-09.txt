@@ -1,9 +1,0 @@
-2018-10-09 16-59-10 - Cucoo5 sent to channel Direct Message with Cucoo5 : <<shutdown | executed: shutdown
-2018-10-09 17-00-51 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
-2018-10-09 17-01-22 - Cucoo5 sent to channel bot_testing : <<derp | Bad Command entered: derp | Count:1
-2018-10-09 17-01-27 - Cucoo5 sent to channel bot_testing : <<<derp | Bad Command entered: derp | Count:1
-2018-10-09 17-01-36 - Cucoo5 sent to channel bot_testing : <<<<<<wuzzap | Bad Command entered: wuzzap | Count:1
-2018-10-09 17-04-15 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
-2018-10-09 17-06-22 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown
-2018-10-09 17-07-38 - Cucoo5 sent to channel Direct Message with Cucoo5 : <<shutdown | executed: shutdown
-2018-10-09 17-09-39 - Cucoo5 sent to channel bot_testing : <<shutdown | executed: shutdown

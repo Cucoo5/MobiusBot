@@ -129,4 +129,16 @@ dmypy.json
 ### Python Patch ###
 .venv/
 
+### Folders ###
+Mobius_Users
+Mobius_logs
+Mobius_Server
+Misc
+
+### Files ###
+Info/masterinfo.pkl
+Misc/token.txt
+Untitled.ipynb
+discordbotserver-dev.ipynb
+
 # End of https://www.gitignore.io/api/python,jupyternotebook

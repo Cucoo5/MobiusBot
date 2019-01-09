@@ -29,6 +29,8 @@ def devinfo(devstate):
     devetoken = 'NDQzMDQ3MTIyNjE1NjY0NjU1.DdHrvQ.jzHf-bcBK6irM-EdJ89jXOj7wfk'
     livetoken = 'NDQzMDU4OTM1Nzg0NjY5MTk0.DdH2Ug.vJx_2Xw-GHdqvlks7OB7N2WYTh0'
 
+    #need to refresh tokens and put new tokens in file in misc.
+
     if devstate:
         usetoken=devetoken
         commandprefix='<<'
@@ -370,6 +372,8 @@ def getusrfolderfilelist(usr):
     '''
 
     filelist,listoffldrs=getpathlist(usr)
+
+    fldr=packuserinfo(usr)["folder"]
 
     folderlist={}
     for foldername in listoffldrs:

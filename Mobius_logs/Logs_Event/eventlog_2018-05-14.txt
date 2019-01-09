@@ -1,2 +1,0 @@
-2018-05-14 02:18:42 - Cucoo5#4871 sent to channel bot_testing : !mobius info | executed: info
-2018-05-14 02:19:03 - Cucoo5#4871 sent to channel bot_testing : !mobius help | executed: help

@@ -9,7 +9,7 @@ register - Input: N/A | Output: Manual register check.
 save - Input: <file attachment> | Output: N/A
 retrieve - Input: <file name> | Output: Sends back file as attachment.
 filelist - Input: N/A | Output: All files accessible to user.
-move - Input: <file name>,<destination folder> | Output: N/A
-rename - Input: <file name>,<new file name> | Output: N/A
+movefile - Input: <file name>,<destination folder> | Output: N/A
+renamefile - Input: <file name>,<new file name> | Output: N/A
 MASTER - shutdown - Input: N/A | Output: Logs Mobius off
 MASTER - restart - Input: N/A | Output: Restarts Mobius

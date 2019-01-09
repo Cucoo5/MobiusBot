@@ -139,12 +139,12 @@ class stdbycmds(object):
                     eventinfo="executed: "+commandinput
 
                 if commandinput=="movefile":
-                    msg=self.__movefilecmd(self,cmdcntxt)
+                    msg=self.__movefilecmd(cmdcntxt)
                     output=fn.outputconstructor(self.client,"string",self.ch,msg)
                     eventinfo="executed: "+commandinput
 
                 if commandinput=="renamefile":
-                    msg=self.__renamefilecmd(self,cmdcntxt)
+                    msg=self.__renamefilecmd(cmdcntxt)
                     output=fn.outputconstructor(self.client,"string",self.ch,msg)
                     eventinfo="executed: "+commandinput
 
@@ -395,9 +395,9 @@ class stdbycmds(object):
         if foldercheck[-1] != "/":
             foldercheck+="/"
 
-        folderdict=getusrfolderfilelist(self.usr)
+        folderdict=fn.getusrfolderfilelist(self.usr)
 
-        usrinfo=packuserinfo(self.usr)
+        usrinfo=fn.packuserinfo(self.usr)
         fldr=usrinfo["folder"]
 
         folderfound=False
@@ -440,7 +440,7 @@ class stdbycmds(object):
         filerename=context.strip().split(",")[1]
 
         extcheck1=fileorig.split(".")[-1]
-        extcheck1=filerename.split(".")[-1]
+        extcheck2=filerename.split(".")[-1]
 
         renamecheck=False
         extcheck=False
@@ -459,9 +459,9 @@ class stdbycmds(object):
             else:
                 renamecheck = True
 
-        folderdict=getusrfolderfilelist(self.usr)
+        folderdict=fn.getusrfolderfilelist(self.usr)
 
-        usrinfo=packuserinfo(self.usr)
+        usrinfo=fn.packuserinfo(self.usr)
         fldr=usrinfo["folder"]
 
         filefound=False
@@ -475,7 +475,8 @@ class stdbycmds(object):
 
         if filefound and renamecheck:
             os.rename(fldr+originfolder+fileorig,fldr+originfolder+filerename)
-
+            msg+="File Renamed"
+            
         else:
             msg+="\n"+"rename failure"
 
