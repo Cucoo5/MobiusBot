@@ -26,16 +26,19 @@ import html2text
 
 def devinfo(devstate):
     # token management
-    devetoken = 'NDQzMDQ3MTIyNjE1NjY0NjU1.DdHrvQ.jzHf-bcBK6irM-EdJ89jXOj7wfk'
-    livetoken = 'NDQzMDU4OTM1Nzg0NjY5MTk0.DdH2Ug.vJx_2Xw-GHdqvlks7OB7N2WYTh0'
-
-    #need to refresh tokens and put new tokens in file in misc.
+    tokenfile=open('./Info/token.txt')
+    tokendict={}
+    for line in tokenfile:
+        temp=line.strip().split(" = ")
+        tokenname=temp[0]
+        tokenval=temp[1]
+        tokendict[tokenname]=tokenval
 
     if devstate:
-        usetoken=devetoken
+        usetoken=tokendict["devetoken"]
         commandprefix='<<'
     else:
-        usetoken=livetoken
+        usetoken=tokendict["livetoken"]
         commandprefix='>>'
 
     return usetoken,commandprefix
