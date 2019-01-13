@@ -127,6 +127,16 @@ def outputhandler(output,usr):
 #-------------------------------------------------------------------------------
 # Additional bot functions
 
+def is_me(msg):
+    return msg.author==client.user
+
+async def purgeannouncements(channel):
+    async for msg in client.logs_from(channel):
+        if msg.author==client.user or msg.content == ">>purge":
+            await client.delete_message(msg)
+
+    await client.send_message(master, "announcements purged")
+
 
 #-------------------------------------------------------------------------------
 # bot event functions
@@ -171,6 +181,11 @@ async def on_message(message):
 
                 usrlst[userinfo]={"usrobj":usrobj}
 
+        elif message.content.startswith(">>purge") and usr == master:
+            channel=discord.Object(id="443783466400612354")
+            await purgeannouncements(channel)
+
+
     except:
         errlog.logerror(message)
         output=errlog.errormsg()
@@ -205,8 +220,8 @@ async def on_ready():
     #    with open(latest_save,"rb") as load:
     #        stdby_app = pk.load(load)
 
-    global rp_assistant
-    rp_assistant=rpa.rpassistant(activeclient,commandprefix,vnum)
+    #global rp_assistant
+    #rp_assistant=rpa.rpassistant(activeclient,commandprefix,vnum)
 
     # sanity check
     print('Logged in as')
