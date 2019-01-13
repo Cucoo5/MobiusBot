@@ -14,6 +14,7 @@ import aiohttp
 import urllib3
 import certifi
 import string
+import pandas as pd
 
 from Bot import functions as fn
 
@@ -272,16 +273,24 @@ class stdbycmds(object):
         '''
         generates a random integer number from 0-100
         '''
+        msg=""
+
         if minmax==None:
             min=0
             max=100
         else:
-            mm=minmax.split(",")
-            min=int(mm[0].strip())
-            max=int(mm[1].strip())
-        number=str(rand.randint(min,max))
+            try:
+                mm=minmax.split(",")
+                min=int(mm[0].strip())
+                max=int(mm[1].strip())
+            except:
+                msg="Error: Invalid Input. Using Default Settings:"+"/n "
+                min=0
+                max=100
 
-        return number
+        msg+=str(rand.randint(min,max))
+
+        return msg
 
     def __registercmd(self):
         '''
@@ -291,6 +300,7 @@ class stdbycmds(object):
         cmd = ["register"]
         return msg,cmd
 
+    """
     def __getfilecmd(self,words):
         '''
         retrieve a saved file in folder
@@ -317,29 +327,42 @@ class stdbycmds(object):
             status=1
 
         return msg,type,status
-
+    """
     def __getfolderfilelist(self):
         '''
         retrieve all folders and files available to user
         '''
         usr=self.usr
 
-        embed = discord.Embed(title="User", description="File List", color=0xeee657)
+        embed = discord.Embed(title="**User**", description=str(usr.name), color=0xeee657)
 
-        folderdict=fn.getusrfolderfilelist(usr)
+        folderdict=fn.getusrfolderfilelistv2(usr)
 
         n=0
+        k=0
         for key,value in folderdict.items():
+            print(key,"/n")
+            print(value)
             if len(value) != 0:
                 n+=1
-                embed.add_field(name="Folder: "+key,value=str(value))
+                filestring=""
+                k=0
+                for file in value:
+                    k+=1
+                    print(k,len(value),k<len(value))
+                    filestring+="**File:** "+file[0]+" **| URL:** "+file[1]
+                    if k<len(value):
+                        print("triggered")
+                        filestring+=" ** | ** "
+
+                embed.add_field(name="__**Folder: ** "+key+"__",value=filestring)
 
         if n==0:
             embed.add_field(name="No Files",value="Found.")
 
         return embed
 
-
+    """
     def __msgattachments(self):
         '''
         checks message for attachments and stores it
@@ -381,7 +404,48 @@ class stdbycmds(object):
             msg="No files found. Please attach files to save."
 
         return msg
+    """
+    def __msgattachments(self,context=None):
+        '''
+        checks message for attachments and stores it in usrprofile csv
+        '''
 
+        list_of_files=fn.filesfrommsg(self.message)
+        usrdict=fn.packuserinfov2(self.usr)
+        profile=pd.read_csv(usrdict["usrprof"])
+        folders=list(profile["Folder"])
+
+        if context != None:
+            destination=context
+        else:
+            destination = "downloads"
+
+        # go through message attachments and download to user file
+
+        filestoappend={"Folder":[],"FileName":[],"FileURL":[]}
+        if (len(list_of_files)>0):
+            if (destination in folders or destination == "downloads"):
+
+                    for file in list_of_files:
+                        filenm=file[0]
+                        fileurl=file[1]
+
+                        filestoappend["Folder"].append(destination)
+                        filestoappend["FileName"].append(filenm)
+                        filestoappend["FileURL"].append(fileurl)
+
+                    dftoappend=pd.DataFrame(filestoappend)
+                    profile=profile.append(dftoappend,sort=False,ignore_index=True)
+                    profile.to_csv(usrdict["usrprof"],index=False)
+                    msg="Files Saved"
+            else:
+                msg="Error: Folder not found."
+        else:
+            msg="Error: No files found. Please attach files to save."
+
+        return msg
+
+    """
     def __movefilecmd(self,context):
         '''
         moves file to selected folder
@@ -434,6 +498,7 @@ class stdbycmds(object):
             msg="Error: Folder not found."
 
         return msg
+    """
 
     def __renamefilecmd(self,context):
         fileorig=context.strip().split(",")[0]
@@ -476,7 +541,7 @@ class stdbycmds(object):
         if filefound and renamecheck:
             os.rename(fldr+originfolder+fileorig,fldr+originfolder+filerename)
             msg+="File Renamed"
-            
+
         else:
             msg+="\n"+"rename failure"
 

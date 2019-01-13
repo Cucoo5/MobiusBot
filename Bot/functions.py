@@ -13,6 +13,7 @@ import random as rand
 import aiohttp
 import urllib3
 import certifi
+import pandas as pd
 
 import matplotlib.pyplot as plt
 
@@ -25,7 +26,7 @@ import html2text
 
 
 def devinfo(devstate):
-    # token management
+    # token management + serverid
     tokenfile=open('./Info/token.txt')
     tokendict={}
     for line in tokenfile:
@@ -41,7 +42,9 @@ def devinfo(devstate):
         usetoken=tokendict["livetoken"]
         commandprefix='>>'
 
-    return usetoken,commandprefix
+    serverid=tokendict["serverid"]
+
+    return usetoken,commandprefix,serverid
 
 def getcommandline(message,commandprefix):
     '''
@@ -206,6 +209,35 @@ def register(usr):
 
     return msg,status
 
+def registerv2(usr):
+    '''
+    Creates user files to store information in CSV files using ID.
+    '''
+    status=False
+    usrdict=packuserinfov2(usr)
+
+    if os.path.exists(usrdict["usrfld"]):
+        msg="User has already been registered: "+str(usr)
+
+    else:
+        if not os.path.exists(usrdict["usrfld"]):
+            # make user folder profile
+            # make user folder
+            os.makedirs(usrdict["usrfld"])
+            usrfoldercsv={"Folder":[],"FileName":[],"FileURL":[]}
+            df=pd.DataFrame(data=usrfoldercsv)
+            df.to_csv(usrdict["usrprof"],index=False)
+
+            #save user object
+            with open(usrdict["usrobjfile"],"wb") as save:
+                pk.dump(usr,save)
+            save.close()
+
+        msg="User has been registered: "+str(usr)
+        status=True
+
+    return msg,status
+
 def packuserinfo(usr):
     '''
     packs user name, discriminator, and id for folder and file access.
@@ -216,6 +248,19 @@ def packuserinfo(usr):
 
     userinfo=username+discriminator+"_"+id
     usrdict=userdict(userinfo,usr)
+    return usrdict
+
+def packuserinfov2(usr):
+    '''
+    gets the folder and file string for usr
+    '''
+    usrID=str(usr.id)
+    usrfld="./Mobius_Users/"+usrID #folder for user
+    usrprof=usrfld+"/"+"userprofile_"+usrID+".csv"
+    usrobjfile=usrfld+"/"+usrID+".pkl"
+
+    usrdict={"usrID":usrID,"usrfld":usrfld,"usrprof":usrprof,"usrobjfile":usrobjfile,"usr":usr}
+
     return usrdict
 
 def userdict(userinfo,usr):
@@ -235,7 +280,7 @@ def getmasterobj():
     return master
 
 def getusrobj(userdict):
-    with open(userdict["object"],"rb") as load:
+    with open(usrdict["usrobjfile"],"rb") as load:
         user = pk.load(load)
 
     return user
@@ -277,7 +322,7 @@ def desktopiniclr():
         os.remove(line)
 
 
-
+"""
 class LinkParser(HTMLParser):
 
     # This is a function that HTMLParser normally has
@@ -324,7 +369,12 @@ class LinkParser(HTMLParser):
         else:
             return "",[]
 
+
 def spider(url, maxPages):
+    '''
+    Main spider function to listen to a forum and get post statistics.
+    '''
+
     pagesToVisit = [url]
     numberVisited = 0
     foundWord = False
@@ -367,11 +417,12 @@ def spider(url, maxPages):
             print(" **Failed to parse page!**")
 
     return G,allpages
-
-
+"""
+"""
 def getusrfolderfilelist(usr):
     '''
     Creates a dictionary for the user of their files and folders
+    - To be changed into a system using a csv file to store links of the files
     '''
 
     filelist,listoffldrs=getpathlist(usr)
@@ -395,7 +446,31 @@ def getusrfolderfilelist(usr):
                 folderlist[foldername].append(filename)
 
     return folderlist
+"""
 
+def getusrfolderfilelistv2(usr):
+    '''
+    Gets a dictionary of user files
+    '''
+    usrdict=packuserinfov2(usr)
+
+    profile=pd.read_csv(usrdict["usrprof"])
+    folderlist={}
+
+    for index,line in profile.iterrows():
+        line=list(line)
+        fldr=line[0]
+        filenm=line[1]
+        fileurl=line[2]
+
+        if fldr not in folderlist:
+            folderlist[fldr]=[[filenm,fileurl]]
+        else:
+            folderlist[fldr].append([filenm,fileurl])
+
+    return folderlist
+
+"""
 def getpathlist(usr):
     '''
     gets file and folder path list for usr
@@ -416,3 +491,22 @@ def getpathlist(usr):
     filelist=[x for x in l2 if x not in listoffldrs]
 
     return filelist,listoffldrs
+"""
+
+def filesfrommsg(msg):
+    '''
+    takes msg and checks for attachments and retrieves and returns urls
+    '''
+
+    attch= msg.attachments
+
+    list_of_files=[]
+
+    # go through message attachments and add to list
+    if len(attch) != 0:
+        for line in attch:
+            fileurl=line["url"]
+            filename=line["filename"]
+            list_of_files.append((filename,fileurl))
+
+    return list_of_files

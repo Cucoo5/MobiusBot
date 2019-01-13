@@ -12,6 +12,7 @@ import random as rand
 import aiohttp
 import urllib3
 import certifi
+import pandas as pd
 
 from Bot import functions as fn
 
@@ -25,7 +26,7 @@ Dev Version
 
 Script for a Discord bot
 Powers a discord bot that can take inputs and post outputs.
-Can store information into a for logs and save states.
+Can store information as logs and files.
 Automatically restarts when the code is updated.
 '''
 
@@ -33,14 +34,14 @@ print("Initializing...")
 
 devstate=True
 
-TOKEN,commandprefix = fn.devinfo(devstate)
+TOKEN,commandprefix,serverid = fn.devinfo(devstate)
 
 # client and server objects
 client = discord.Client()
 activeclient=client
-server = discord.Server(id='443051945016688640')
+server = discord.Server(id=serverid)
 
-#get most recent version
+#get most recent version number
 docfile=open("./Info/changelog.txt","r")
 vnumlist=[]
 for line in docfile:
@@ -51,7 +52,6 @@ vnum=vnumlist[-1]
 docfile.close()
 
 errlog=None
-#usractivelst=None
 stdby_app=None
 
 #-------------------------------------------------------------------------------
@@ -125,21 +125,28 @@ def outputhandler(output,usr):
     return outsys
 
 #-------------------------------------------------------------------------------
+# Additional bot functions
 
+
+#-------------------------------------------------------------------------------
 # bot event functions
 @client.event
 async def on_message(message):
 
-    usrobj=message.author
-    usrnm=str(usrobj.name)
-    userdict=fn.packuserinfo(usrobj)
-    userinfo=userdict["string"]
+    usr=message.author
+    userdict=fn.packuserinfov2(usr)
 
     ch=message.channel
 
-    # Prevent bot from replying to self
-    if usrobj == client.user:
-        return
+    # Prevent bot from replying to self, unless is file message
+    if usr == client.user:
+        botID=client.user.id
+        if message.content.startswith(">!>FileToSave:"+botID):
+
+            eventinfo="Saving self-created file"
+            fn.eventlogger(message,eventinfo)
+            await client.delete_message(message)
+
 
     try:
         global commandprefix
@@ -148,7 +155,7 @@ async def on_message(message):
             output = stdby_app.in_and_out(message)
 
             if output != None:
-                for output in outputhandler(output,usrobj):
+                for output in outputhandler(output,usr):
                     await output
 
 
@@ -159,7 +166,7 @@ async def on_message(message):
                 msg2,status=fn.register(usrobj)
                 eventinfo = "user registered: "+usrobj.name
                 fn.eventlogger(message,eventinfo)
-                await client.send_message(usrobj, msg)
+                await client.send_message(usr, msg)
                 await client.send_message(master, msg2)
 
                 usrlst[userinfo]={"usrobj":usrobj}
@@ -167,7 +174,7 @@ async def on_message(message):
     except:
         errlog.logerror(message)
         output=errlog.errormsg()
-        for output in outputhandler(output,usrobj):
+        for output in outputhandler(output,usr):
             await output
 
 def status_send():
