@@ -24,6 +24,9 @@ class  rpassistant(object):
         Reminder Function
     App Creator, Approval System, and Archives
 
+    Assign and manage roles
+
+
     Additional notes:
         - RPs will be objects with some basic info, mainly links to OOC and IC
           as well as last active time info
@@ -42,8 +45,7 @@ class  rpassistant(object):
         # This will be a folder Mobius_Server. Will also need logs_Server
         serverlogsfolder="./Mobius_logs/Logs_Server/"
 
-    def user_profile_creator(userinfo):
+    def user_role_assignment(usr,role):
         '''
-        Creates user profile.
-        Reference register function (Bot.functions line 138)
+        
         '''

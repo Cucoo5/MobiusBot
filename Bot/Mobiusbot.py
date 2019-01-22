@@ -59,18 +59,19 @@ stdby_app=None
 # get master object
 master=fn.getmasterobj()
 
+
 # registered user object list
 usrlst={}
 
-#get user object files
+#get user objects
 list_of_users = glob.glob('./Mobius_Users/*/*.pkl')
 for file in list_of_users:
     f=file.replace('\\','/')
     with open(f,"rb") as load:
-        user = pk.load(load)
-    usr=fn.packuserinfo(user)
-    userinfo=usr['string']
-    usrlst[userinfo]={"usrobj":usr}
+        usr = pk.load(load)
+    usrid=usr.id
+    usrlst[usr.id]={"usrobj":usr}
+
 
 #-------------------------------------------------------------------------------
 
@@ -94,8 +95,7 @@ def outputhandler(output,usr):
     global master
     global usrlst
 
-    userdict=fn.packuserinfo(usr)
-    userinfo=userdict["string"]
+    usrid=usr.id
 
     outsys,command=fn.unpackoutput(output)
 
@@ -111,11 +111,11 @@ def outputhandler(output,usr):
 
                 if cmd[0] == "register":
                     msg2,status=fn.register(usr)
-                    if userinfo in usrlst and status == False:
+                    if userid in usrlst and status == False:
                         msg="Greetings, "+str(usr.name)+"."+"\n"
                         msg+="You are already registered within the Mobius database."+"\n"
                         outsys.append(client.send_message(usr, msg))
-                    elif userinfo in usrlst and status == True:
+                    elif userid in usrlst and status == True:
                         msg="Greetings, "+str(usr.name)+"."+"\n"
                         msg+="Your user information has been reset."+"\n"
                         outsys.append(client.send_message(usr, msg))
@@ -138,12 +138,42 @@ async def purgeannouncements(channel):
     await client.send_message(master, "announcements purged")
 
 
+async def create_role(usr,rolename,color):
+    '''
+    Creates a role, and adds user to that role.
+
+    '''
+
+    channel=discord.Object(id="443052380800417802")
+
+    global client
+    global server
+
+    svr=server
+
+    #try:
+    await client.create_role(server=svr,name=rolename)
+    rolelist=svr.roles
+    print(len(rolelist)) #=0
+    #roleobj=discord.Role(server=svr,name=rolename)
+    #memberobj=svr.get_member(usr.id)
+    #await client.add_roles(memberobj,roleobj)
+        #msg="Role Created."
+    #msg="test"
+
+    #except:
+        #msg="Role Creation and Join Failed. Role may already exist or User cannot Join Role."
+
+
+    await client.send_message(channel,msg)
+
 #-------------------------------------------------------------------------------
 # bot event functions
 @client.event
 async def on_message(message):
 
     usr=message.author
+    usrid=usr.id
     userdict=fn.packuserinfov2(usr)
 
     ch=message.channel
@@ -169,21 +199,35 @@ async def on_message(message):
                     await output
 
 
-            if userinfo not in usrlst:
+            if usrid not in usrlst:
                 fn.desktopiniclr()
-                msg="Welcome, "+usrnm+"."+"\n"
+                msg="Welcome, "+str(usr.name)+"."+"\n"
                 msg+="For convenience, your user information has been saved to the Mobius database."+"\n"
-                msg2,status=fn.register(usrobj)
+                msg2,status=fn.register(usr)
                 eventinfo = "user registered: "+usrobj.name
                 fn.eventlogger(message,eventinfo)
                 await client.send_message(usr, msg)
                 await client.send_message(master, msg2)
 
-                usrlst[userinfo]={"usrobj":usrobj}
+                usrlst[usrid]={"usrobj":usr}
 
         elif message.content.startswith(">>purge") and usr == master:
             channel=discord.Object(id="443783466400612354")
             await purgeannouncements(channel)
+
+        elif message.content.startswith(">>create_role") and usr == master:
+            options=str(message.content).replace(">>create_role","").strip().split(',')
+
+            try:
+                usrid=options[0]
+                usr=discord.Object(id=usrid)
+                rolename=options[1]
+                color=options[2]
+
+            except:
+                msg="Error: Invalid Input."
+
+            await create_role(usr,rolename,color)
 
 
     except:
